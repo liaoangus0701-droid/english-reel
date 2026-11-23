@@ -121,6 +121,27 @@ function pickSrc(ts){
   return c[i];
 }
 
+async function gem(prompt,max,temp){
+  const c=D.cfg;
+  const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(c.model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":c.key},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",temperature:temp,maxOutputTokens:max}})});
+  const j=await res.json();
+  if(!res.ok)throw new Error(j.error&&j.error.message||res.status);
+  const txt=((j.candidates||[])[0]?.content?.parts||[]).map(x=>x.text||"").join("");
+  return JSON.parse(txt.replace(/```json|```/g,"").trim());
+}
+const toks=t=>[...new Set((t.match(/[A-Za-z]+(?:['’][A-Za-z]+)*/g)||[]).map(w=>w.toLowerCase().replace("’","'")))];
+function look(a,w){
+  for(const k of [w,w.replace(/'s$/,""),w.replace(/(es|s)$/,""),w.replace(/s$/,""),w.replace(/ed$/,""),w.replace(/ing$/,"")]){
+    const r=a.words[k];
+    if(typeof r==="string"&&r.includes("|")&&r.split("|").slice(1).join("|").trim())return r;
+  }
+  return null;
+}
+async function askWords(a,ws){
+  const o=await gem("Article:\n"+a.text+"\n\nFor each word below, give its part of speech and its Traditional Chinese (Taiwan usage) meaning as used in this article. Return ONLY JSON like {\"word\":\"n.|意思\"} using exactly these keys: "+ws.join(", "),2048,.2);
+  for(const k in o){if(typeof o[k]==="string"&&o[k].includes("|"))a.words[k.toLowerCase().replace("’","'")]=o[k]}
+  save();
+}
 async function gen(){
   const c=D.cfg;
   if(busy)return;
@@ -143,15 +164,12 @@ Level: ${LV[c.level]}
 Style: retell the facts in clear, simple, school-textbook sentence patterns. Replace hard terms with simple descriptions but keep proper names. No slang, no fragments. Contractions are fine.
 Return ONLY JSON:
 {"title_en":"","title_zh":"Traditional Chinese, Taiwan usage","article":"","targets_used":{"<base target word>":"<lowercase form used in the article>"},"words":{"<every distinct lowercase word in the article, including targets>":"<part of speech like n./v./adj./adv./prep./conj./pron./aux./art.>|<Traditional Chinese meaning in this context, 2-8 characters>"}}`;
-    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(c.model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":c.key},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",temperature:.7,maxOutputTokens:4096}})});
-    const j=await res.json();
-    if(!res.ok)throw new Error(j.error&&j.error.message||res.status);
-    const txt=((j.candidates||[])[0]?.content?.parts||[]).map(x=>x.text||"").join("");
-    const o=JSON.parse(txt.replace(/```json|```/g,"").trim());
+    const o=await gem(prompt,4096,.7);
     if(!o.article||!o.words)throw new Error("模型回傳格式不完整");
     const words={};for(const k in o.words)words[k.toLowerCase().replace("’","'")]=o.words[k];
     const a={id:Date.now(),topic:s.topic,te:o.title_en||s.title,tz:o.title_zh||"",text:o.article,words,tmap:o.targets_used||{},liked:false,saved:false,dwell:0,sid:s.id,sname:s.source,surl:s.url,sdate:s.date};
     D.used.push(s.id);D.articles.push(a);save();add(a,D.articles.length-1);say("");
+    const miss=toks(a.text).filter(w=>!look(a,w));if(miss.length)askWords(a,miss).catch(()=>{});
   }catch(e){failed=true;say("生成失敗："+e.message)}
   busy=false;refill();
 }
@@ -199,15 +217,19 @@ io.observe($("more"));
 document.addEventListener("visibilitychange",()=>{if(document.hidden)leave()});
 
 function hideSheet(){$("sheet").hidden=true;document.querySelectorAll(".w.on").forEach(x=>x.classList.remove("on"))}
-function tap(el){
-  const a=D.articles[+el.closest("section").dataset.i],w=el.dataset.w;
-  const raw=a.words[w]||a.words[w.replace(/(es|s)$/,"")]||"?|（沒有詞義資料）",[pos,m]=raw.split("|");
+let tapN=0;
+async function tap(el){
+  const id=++tapN,a=D.articles[+el.closest("section").dataset.i],w=el.dataset.w;
   const t=el.classList.contains("t"),base=Object.keys(a.tmap||{}).find(k=>String(a.tmap[k]).toLowerCase()===w)||w;
   (D.state[base]=D.state[base]||{shown:0,taps:0}).taps++;
-  D.taps.push({w,pos,m,target:t,art:a.id,sent:sents(a.text)[+el.dataset.s],at:Date.now(),sec:a.t0?Math.round((Date.now()-a.t0)/1000):0});save();
   hideSheet();el.classList.add("on");
-  $("sw").textContent=el.textContent;$("sm").textContent=m?pos+" "+m:pos;
-  $("stg").textContent=t?"目標單字":"非目標單字";$("stg").className="tag"+(t?" t":"");$("sheet").hidden=false;
+  $("sw").textContent=el.textContent;$("stg").textContent=t?"目標單字":"非目標單字";$("stg").className="tag"+(t?" t":"");
+  let raw=look(a,w);
+  $("sm").textContent=raw?"":"查詢中…";$("sheet").hidden=false;
+  if(!raw){try{await askWords(a,[w]);raw=look(a,w)}catch(e){}}
+  const x=raw?raw.split("|"):["",""],pos=x[0],m=x.slice(1).join("|");
+  if(id===tapN)$("sm").textContent=raw?(m?pos+" "+m:pos):"查不到，請再點一次重試";
+  D.taps.push({w,pos,m,target:t,art:a.id,sent:sents(a.text)[+el.dataset.s],at:Date.now(),sec:a.t0?Math.round((Date.now()-a.t0)/1000):0});save();
 }
 feed.addEventListener("click",e=>{const el=e.target.closest(".w");el?tap(el):hideSheet()});
 feed.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("w")){e.preventDefault();tap(e.target)}});
