@@ -1,0 +1,6 @@
+# Data licenses
+
+- `data/ceec-words.json`: excerpt (levels 1-3) of the Vocabulary List for Senior High English (CEEC, Taiwan), used for non-profit purposes. Copyright belongs to the College Entrance Examination Center Foundation. Credit the source when reproducing. Commercial use needs prior written permission from the foundation. This file is NOT covered by the code license.
+- Articles rewritten from Wikipedia: CC BY-SA 4.0. Credit the Wikipedia article and share adaptations under the same license.
+- NASA text: generally not copyrighted; NASA logos and third-party material are excluded.
+- Global Voices text: CC BY, credit the original author and link back; images are excluded.
