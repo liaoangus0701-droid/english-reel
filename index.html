@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>我的英文雞巴</title>
+<title>我的英文滑讀</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f3f6f9;--fg:#14202b;--muted:#5b6874;--card:#fff;--line:#dde4ea;--mark:#ffe27a;--markfg:#3b2f00;--acc:#0f766e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -47,7 +47,7 @@ button:focus-visible,.w:focus-visible,input:focus-visible{outline:2px solid var(
 </style>
 </head>
 <body>
-<header><b>我的英文滑讀</b><span id="st"></span><span><button id="bv">單字本</button> <button id="bs">設定</button></span></header>
+<header><b>我的英文滑讀</b><span id="st"></span><span><button id="bi">來源</button> <button id="bv">單字本</button> <button id="bs">設定</button></span></header>
 <main id="feed"><section id="more"><h2>下一篇準備中</h2><p class="zh" id="mt">讀取最新資料中…</p><div class="row"><button id="gb">立即生成一篇</button></div><div id="hn" style="margin-top:18px"></div></section></main>
 <footer><span id="eng"></span><span>上滑看下一篇，點單字看意思</span></footer>
 
@@ -59,15 +59,36 @@ button:focus-visible,.w:focus-visible,input:focus-visible{outline:2px solid var(
   <label>模型名稱</label><input id="cm">
   <label>備用模型（主模型忙碌時改用，可留空）</label><input id="cm2">
   <label>想看的主題（可多選）</label><div class="chips" id="ct"></div>
+  <label>來源範圍</label><select id="cst"><option value="1">只用授權明確的來源（建議）</option><option value="0">也顯示授權未確認的來源</option></select>
   <label>難度</label><select id="cd"><option value="0">簡單</option><option value="1">普通</option><option value="2">挑戰</option></select>
   <label>文章長度</label><select id="cg"><option value="0">短（約 60 字）</option><option value="1">中（約 100 字）</option><option value="2">長（約 150 字）</option></select>
   <div class="row"><button id="cs" class="on">儲存並關閉</button></div>
+</div></div>
+
+<div id="pimp" class="full" hidden><div>
+  <h2>匯入單字</h2>
+  <label>清單名稱</label><input id="impName">
+  <label>貼上單字：每行一個，可寫「單字, 中文」；也可直接貼大考中心詞彙表的文字，會自動辨識</label>
+  <textarea id="impText" style="width:100%;height:140px;box-sizing:border-box"></textarea>
+  <input type="file" id="impFile" accept=".txt,.csv" style="margin-top:6px">
+  <label>匯入後的狀態</label><select id="impDest"><option value="learning">學習中</option><option value="known">已會（不會出現）</option><option value="ignore">不想學（不會出現）</option></select>
+  <p id="impPrev" style="font-size:13px;color:var(--muted)"></p>
+  <div class="row"><button id="impPv">預覽</button><button id="impOk" class="on">匯入</button><button id="impX">關閉</button></div>
+  <div id="impList"></div>
+</div></div>
+
+<div id="pinfo" class="full" hidden><div>
+  <h2>來源與授權</h2>
+  <div id="il"></div>
+  <p style="font-size:13px;color:var(--muted)">改寫自維基百科的文章，請依 CC BY-SA 4.0 標示來源並以相同方式分享，文章底下的連結即為來源標示。標示「授權未確認」的來源預設不顯示。本 App 讀到的資料只當作事實來源，文章由 Gemini 改寫，仍可能有誤，請對照原文。</p>
+  <div class="row"><button id="ic" class="on">關閉</button></div>
 </div></div>
 
 <div id="pvoc" class="full" hidden><div>
   <h2>單字本</h2>
   <p id="vs" style="font-size:13px;color:var(--muted)"></p>
   <div class="row"><input id="vn" placeholder="新增想學的單字（英文）" style="flex:1"><button id="va">加入單字池</button></div>
+  <div class="row"><select id="vf" style="width:auto"><option value="all">全部</option><option value="learning">學習中</option><option value="familiar">熟悉</option><option value="mastered">已掌握</option><option value="known">已會</option><option value="ignore">不想學</option></select><button id="vi">匯入單字</button></div>
   <div id="vl"></div>
   <div class="row"><button id="ve">複製點擊紀錄 JSON</button><button id="vx">清空全部資料</button><button id="vc" class="on">關閉</button></div>
   <textarea id="vj" readonly hidden style="width:100%;height:100px;margin-top:8px"></textarea>
@@ -79,7 +100,7 @@ const h=(t,p={},...k)=>{const e=document.createElement(t);Object.assign(e,p);k.f
 const BASE="answer begin brave bridge careful choose clever collect dangerous decide defeat different early enemy escape explore famous finally follow future gather guide hidden honest important invite journey kind laugh lesson local mistake modern narrow notice offer ordinary perfect plan protect quiet reach reward safe search secret share simple special strange strong surprise travel useful village wander warn wonder worth".split(" ");
 const TOPICS=["國際","科技","科技人物","遊戲版本","遊戲攻略","遊戲劇情"];
 const LV=["very easy: sentences under 10 words, only the most basic vocabulary","easy: sentences mostly under 15 words","moderate: a mix of short and longer sentences, with a few when/if/that clauses"],LN=[60,100,150];
-let D={articles:[],state:{},extra:[],taps:[],used:[],days:{},calls:{},out:{},cfg:{key:"",model:"gemini-3.5-flash-lite",model2:"gemini-3.1-flash-lite",topics:["國際","科技"],level:1,len:1}};
+let D={articles:[],state:{},extra:[],taps:[],used:[],days:{},calls:{},out:{},lists:[],flags:{},top:{},off:0,hist:[],ex:{},cfg:{key:"",model:"gemini-3.5-flash-lite",model2:"gemini-3.1-flash-lite",topics:["國際","科技"],level:1,len:1,strict:1}};
 try{const s=JSON.parse(localStorage.getItem("reel_v2"));if(s)D={...D,...s,cfg:{...D.cfg,...s.cfg}}}catch(e){}
 if(D.cfg.model2==="gemini-2.5-flash-lite")D.cfg.model2="gemini-3.1-flash-lite";
 const save=()=>{try{localStorage.setItem("reel_v2",JSON.stringify(D))}catch(e){}};
@@ -106,25 +127,63 @@ function eng(){
   $("eng").textContent=(n?"連續 "+n+" 天 · ":"")+"今日 "+(D.days[fd(new Date())]||0)+" 篇 · API "+(D.calls[fd(new Date())]||0)+" 次";
 }
 
-function pick(n){
-  const items=[...new Set([...BASE,...D.extra])].map(w=>{const s=D.state[w]||{shown:0,taps:0};let k=(1/(1+s.shown))*(1+2*s.taps);if(s.shown>=6&&!s.taps)k*=.2;return{w,k}});
-  const out=[];
-  while(out.length<n&&items.length){let r=Math.random()*items.reduce((a,b)=>a+b.k,0),i=0;for(;i<items.length-1;i++){r-=items[i].k;if(r<=0)break}out.push(items.splice(i,1)[0].w)}
+let WORDS=[];
+fetch("data/ceec-words.json").then(r=>r.json()).then(j=>{for(const lv in j.levels)for(const e of j.levels[lv].w){const p=e.split("|");WORDS.push({w:p[0],pos:p[1],lv:+lv})}}).catch(()=>{});
+const effLv=()=>Math.max(0,Math.min(2,D.cfg.level+Math.round(D.off)));
+const cap=()=>1+effLv();
+const stat=w=>{const s=D.state[w];if(!s||(!s.shown&&!s.taps))return"new";if(s.shown>=6&&(s.miss||0)>=5)return"mastered";if(s.shown>=3&&(s.miss||0)>=3)return"familiar";return"learning"};
+const mean=w=>{for(const l of D.lists)for(const x of l.words)if(x.w===w&&x.m)return x.m;return""};
+function cands(){
+  const c=cap(),seen=new Set(),out=[];
+  const add=(w,lv)=>{if(seen.has(w)||D.flags[w]||!/^[a-z][a-z'-]+$/.test(w))return;seen.add(w);out.push({w,lv})};
+  D.lists.filter(l=>l.on).forEach(l=>l.words.forEach(x=>add(x.w,0)));
+  (WORDS.length?WORDS.filter(x=>x.lv<=c):BASE.map(w=>({w,lv:1}))).forEach(x=>add(x.w,x.lv));
+  D.extra.forEach(w=>add(w,0));
   return out;
 }
+function draw(arr,k,wf){
+  const o=[],a=[...arr];
+  while(o.length<k&&a.length){let r=Math.random()*a.reduce((t,x)=>t+wf(x),0),i=0;for(;i<a.length-1;i++){r-=wf(a[i]);if(r<=0)break}o.push(a.splice(i,1)[0])}
+  return o;
+}
+function pick(n){
+  const g={new:[],learning:[],review:[]};
+  cands().forEach(x=>{const s=stat(x.w);g[s==="new"?"new":s==="learning"?"learning":"review"].push(x)});
+  const wl=x=>1+2*((D.state[x.w]||{}).taps||0);
+  let out=[...draw(g.learning,3,wl),...draw(g.new,1,x=>1/(1+x.lv)),...draw(g.review,1,()=>1)];
+  const rest=[...g.learning,...g.new,...g.review].filter(x=>!out.includes(x));
+  out=out.concat(draw(rest,n-out.length,wl));
+  return out.map(x=>x.w);
+}
+const nrm=()=>Math.sqrt(-2*Math.log(1-Math.random()))*Math.cos(2*Math.PI*Math.random());
+function gam(k){
+  if(k<1)return gam(k+1)*Math.pow(Math.random(),1/k);
+  const d=k-1/3,c=1/Math.sqrt(9*d);
+  for(;;){let x,v;do{x=nrm();v=1+c*x}while(v<=0);v=v*v*v;const u=Math.random();if(u<1-.0331*x**4||Math.log(u)<.5*x*x+d*(1-v+Math.log(v)))return d*v}
+}
+const beta=(a,b)=>{const x=gam(a),y=gam(b);return x/(x+y)};
 function pickSrc(ts){
-  const c=SRC.filter(s=>ts.includes(s.topic)&&!D.used.includes(s.id));
+  let c=SRC.filter(s=>ts.includes(s.topic)&&!D.used.includes(s.id)&&(!+D.cfg.strict||s.ok!==false));
   if(!c.length)return null;
-  const ws=c.map(s=>{
-    const age=s.date?Math.max(0,(Date.now()-Date.parse(s.date))/864e5):3;
-    return (1/(1+age))*(1+2*D.articles.filter(a=>a.topic===s.topic&&a.liked).length);
-  });
+  const last=D.articles.slice(-2).map(a=>a.topic);
+  if(last.length===2&&last[0]===last[1]){const o=c.filter(s=>s.topic!==last[0]);if(o.length)c=o}
+  if(Math.random()<.15)return c[Math.floor(Math.random()*c.length)];
+  const th={};ts.forEach(t=>{const p=D.top[t]||{a:2,b:1};th[t]=beta(p.a,p.b)});
+  const ws=c.map(s=>{const age=s.date?Math.max(0,(Date.now()-Date.parse(s.date))/864e5):3;return(th[s.topic]||.5)/(1+age)});
   let r=Math.random()*ws.reduce((a,b)=>a+b,0),i=0;for(;i<c.length-1;i++){r-=ws[i];if(r<=0)break}
   return c[i];
 }
-
-const fmtWait=ms=>{const m=Math.max(1,Math.round(ms/6e4));return m>=60?Math.floor(m/60)+" 小時 "+(m%60)+" 分":m+" 分"};
-const isQuota=e=>/quota|exceeded your current/i.test((e&&e.message)||"");
+function finish(a){
+  if(a.done||!a.seen)return;a.done=1;
+  const wc=toks(a.text).length||60,exp=Math.max(8,wc/2.5),sec=a.dwell||0,tp=new Set(a.tp||[]);
+  Object.keys(a.tmap||{}).forEach(b=>{const s=D.state[b]=D.state[b]||{shown:0,taps:0};s.miss=tp.has(b)?0:(s.miss||0)+1});
+  const p=D.top[a.topic]=D.top[a.topic]||{a:2,b:1};
+  p.a=1+(p.a-1)*.97;p.b=1+(p.b-1)*.97;
+  if(a.liked||a.saved||sec>=exp*.6)p.a+=1;else if(sec<Math.min(3,exp*.3))p.b+=1;
+  D.hist=(D.hist||[]).concat((a.tpn||0)*100/wc).slice(-5);
+  if(D.hist.length>=3){const m=D.hist.reduce((x,y)=>x+y,0)/D.hist.length;if(m>8)D.off=Math.max(-1,D.off-.34);else if(m<3)D.off=Math.min(1,D.off+.34)}
+  save();
+}
 async function gem(prompt,max,temp){
   const c=D.cfg,models=[...new Set([c.model,c.model2].filter(Boolean))];
   let last=null,soon=0;
@@ -186,17 +245,17 @@ Title: ${s.title}
 Text: ${s.text}
 
 Fact rules: use ONLY facts stated in SOURCE. Do not add numbers, names, dates, quotes or claims that are not in SOURCE. If SOURCE is thin, write fewer sentences instead of inventing. Do not present opinions as facts. Never use direct quotations; paraphrase and attribute statements (for example, "he said").
-Target words (use each naturally at least once, inflect only if needed; skip a word if it cannot fit the facts naturally): ${targets.join(", ")}
+Target words (use each naturally at least once, inflect only if needed; skip a word if it cannot fit the facts naturally): ${targets.map(w=>mean(w)?w+" (meaning: "+mean(w)+")":w).join(", ")}
 Length: about ${LN[c.len]} words.
-Level: ${LV[c.level]}
+Level: ${LV[effLv()]}
 Style: retell the facts in clear, simple, school-textbook sentence patterns. Replace hard terms with simple descriptions but keep proper names. No slang, no fragments. Contractions are fine.
 Return ONLY JSON:
-{"title_en":"","title_zh":"Traditional Chinese, Taiwan usage","article":"","targets_used":{"<base target word>":"<lowercase form used in the article>"},"words":{"<every distinct lowercase word in the article, including targets>":"<part of speech like n./v./adj./adv./prep./conj./pron./aux./art.>|<Traditional Chinese meaning in this context, 2-8 characters>"}}`;
+{"title_en":"","title_zh":"Traditional Chinese, Taiwan usage","article":"","examples":{"<target word used>":["<short example sentence in a different context>","<another>"]},"targets_used":{"<base target word>":"<lowercase form used in the article>"},"words":{"<every distinct lowercase word in the article, including targets>":"<part of speech like n./v./adj./adv./prep./conj./pron./aux./art.>|<Traditional Chinese meaning in this context, 2-8 characters>"}}`;
     const o=await gem(prompt,4096,.7);
     if(!o.article||!o.words)throw new Error("模型回傳格式不完整");
     const words={};for(const k in o.words)words[k.toLowerCase().replace("’","'")]=o.words[k];
-    const a={id:Date.now(),topic:s.topic,te:o.title_en||s.title,tz:o.title_zh||"",text:o.article,words,tmap:o.targets_used||{},liked:false,saved:false,dwell:0,sid:s.id,sname:s.source,surl:s.url,sdate:s.date};
-    D.used.push(s.id);D.articles.push(a);save();add(a,D.articles.length-1);say("");
+    const a={id:Date.now(),topic:s.topic,te:o.title_en||s.title,tz:o.title_zh||"",text:o.article,words,tmap:o.targets_used||{},ex:o.examples||{},liked:false,saved:false,dwell:0,sid:s.id,lic:s.lic||"",sname:s.source,surl:s.url,sdate:s.date};
+    for(const k in a.ex)if(Array.isArray(a.ex[k]))D.ex[k.toLowerCase()]=a.ex[k].slice(0,2).map(String);D.used.push(s.id);D.articles.push(a);save();add(a,D.articles.length-1);say("");
   }catch(e){failed=true;say(e.quota?e.message:"生成失敗："+e.message);if(e.transient)setTimeout(()=>{failed=false;refill()},60000)}
   busy=false;refill();
 }
@@ -220,7 +279,7 @@ function add(a,i){
   lk.onclick=()=>{a.liked=!a.liked;lk.textContent=a.liked?"♥ 已讚":"♡ 讚";lk.className=a.liked?"on":"";save()};
   sv.onclick=()=>{a.saved=!a.saved;sv.textContent=a.saved?"★ 已收藏":"☆ 收藏";sv.className=a.saved?"on":"";save()};
   const fresh=a.sdate&&Date.now()-Date.parse(a.sdate)<864e5;
-  const meta=h("p",{className:"meta"},fresh?h("span",{className:"new",textContent:"新"}):"",h("span",{textContent:a.topic+" · "+(a.sname||"")+" · "+(a.sdate?ago(a.sdate):"背景知識")}));
+  const meta=h("p",{className:"meta"},fresh?h("span",{className:"new",textContent:"新"}):"",h("span",{textContent:a.topic+" · "+(a.sname||"")+" · "+(a.sdate?ago(a.sdate):"背景知識")+(a.lic?" · "+a.lic:"")}));
   const act=h("div",{className:"act"},lk,sv);
   if(/^https?:\/\//.test(a.surl||""))act.append(h("a",{href:a.surl,target:"_blank",rel:"noopener",textContent:"看原文"}));
   const s=h("section",{},h("h2",{textContent:a.te}),h("p",{className:"zh",textContent:a.tz}),meta,h("div",{className:"body"},body(a)),act);
@@ -228,7 +287,7 @@ function add(a,i){
 }
 function leave(){
   const a=D.articles[cur];
-  if(a&&a.t0){a.dwell=(a.dwell||0)+Math.round((Date.now()-a.t0)/1000);a.t0=0;save()}
+  if(a&&a.t0){a.dwell=(a.dwell||0)+Math.round((Date.now()-a.t0)/1000);a.t0=0;save();finish(a)}
 }
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
@@ -248,7 +307,7 @@ let tapN=0;
 async function tap(el){
   const id=++tapN,a=D.articles[+el.closest("section").dataset.i],w=el.dataset.w;
   const t=el.classList.contains("t"),base=Object.keys(a.tmap||{}).find(k=>String(a.tmap[k]).toLowerCase()===w)||w;
-  (D.state[base]=D.state[base]||{shown:0,taps:0}).taps++;
+  (D.state[base]=D.state[base]||{shown:0,taps:0}).taps++;D.state[base].miss=0;(a.tp=a.tp||[]).push(base);if(!t)a.tpn=(a.tpn||0)+1;
   hideSheet();el.classList.add("on");
   $("sw").textContent=el.textContent;$("stg").textContent=t?"目標單字":"非目標單字";$("stg").className="tag"+(t?" t":"");
   let raw=look(a,w);
@@ -262,28 +321,79 @@ feed.addEventListener("click",e=>{const el=e.target.closest(".w");el?tap(el):hid
 feed.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("w")){e.preventDefault();tap(e.target)}});
 $("cl").onclick=hideSheet;$("gb").onclick=()=>{failed=false;gen()};
 
-function panel(id){["pset","pvoc"].forEach(p=>$(p).hidden=p!==id);if(id==="pset")drawSet();if(id==="pvoc")drawVoc()}
+function panel(id){["pset","pvoc","pinfo","pimp"].forEach(p=>$(p).hidden=p!==id);if(id==="pset")drawSet();if(id==="pvoc")drawVoc();if(id==="pinfo")drawInfo();if(id==="pimp")drawImp()}
 function drawSet(){
-  $("ck").value=D.cfg.key;$("cm").value=D.cfg.model;$("cm2").value=D.cfg.model2||"";$("cd").value=D.cfg.level;$("cg").value=D.cfg.len;
+  $("ck").value=D.cfg.key;$("cm").value=D.cfg.model;$("cst").value=D.cfg.strict?1:0;$("cm2").value=D.cfg.model2||"";$("cd").value=D.cfg.level;$("cg").value=D.cfg.len;
   const all=[...new Set([...TOPICS,...SRC.map(s=>s.topic),...D.cfg.topics])];
   $("ct").replaceChildren(...all.map(t=>{
     const b=h("button",{textContent:t,className:D.cfg.topics.includes(t)?"on":""});
     b.onclick=()=>{const k=D.cfg.topics;k.includes(t)?k.splice(k.indexOf(t),1):k.push(t);b.className=k.includes(t)?"on":""};return b}));
 }
-$("cs").onclick=()=>{D.cfg.key=$("ck").value.trim();D.cfg.model=$("cm").value.trim()||"gemini-3.5-flash-lite";D.cfg.model2=$("cm2").value.trim();D.cfg.level=+$("cd").value;D.cfg.len=+$("cg").value;save();panel(null);failed=false;refill()};
+$("cs").onclick=()=>{D.cfg.key=$("ck").value.trim();D.cfg.model=$("cm").value.trim()||"gemini-3.5-flash-lite";D.cfg.model2=$("cm2").value.trim();D.cfg.strict=+$("cst").value;D.cfg.level=+$("cd").value;D.cfg.len=+$("cg").value;save();panel(null);failed=false;refill()};
+function drawInfo(){
+  const m={};SRC.forEach(s=>{const x=m[s.source]=m[s.source]||{n:0,lic:s.lic||"授權未確認",ok:s.ok!==false,t:s.topic};x.n++});
+  $("il").replaceChildren(...Object.entries(m).map(([k,x])=>h("div",{className:"vr"},h("b",{textContent:k,style:"min-width:120px;font-size:14px"}),h("span",{textContent:x.t+" · "+x.lic+(x.ok?"":"（預設不顯示）")}),h("span",{textContent:x.n+" 則",style:"flex:none"}))));
+}
 function drawVoc(){
-  const m={};D.taps.forEach(t=>{const x=m[t.w]=m[t.w]||{n:0,pos:t.pos,m:t.m,t:t.target};x.n++});
-  const pool=new Set([...BASE,...D.extra]),rows=Object.entries(m).sort((a,b)=>b[1].n-a[1].n);
-  $("vs").textContent="單字池 "+pool.size+" 字；已讀 "+D.articles.filter(a=>a.seen).length+" 篇；點擊 "+D.taps.length+" 次。下方是你點過的字，次數越多代表越需要複習。";
-  $("vl").replaceChildren(...rows.map(([w,x])=>{
-    const r=h("div",{className:"vr"},h("b",{textContent:w}),h("span",{textContent:x.pos+" "+(x.m||"")+(x.t?"":"（非目標）")}),h("span",{textContent:"×"+x.n,style:"flex:none"}));
-    if(!pool.has(w)){const b=h("button",{textContent:"加入"});b.onclick=()=>{D.extra.push(w);save();drawVoc()};r.append(b)}
+  const f=$("vf").value,names={new:"新字",learning:"學習中",familiar:"熟悉",mastered:"已掌握",known:"已會",ignore:"不想學"};
+  const pool=new Set(cands().map(x=>x.w)),tp={};D.taps.forEach(t=>{tp[t.w]=t});
+  const ws=[...new Set([...Object.keys(D.state),...Object.keys(D.flags),...Object.keys(tp)])];
+  const rows=ws.map(w=>({w,s:D.flags[w]||stat(w)})).filter(x=>f==="all"||x.s===f).sort((a,b)=>((D.state[b.w]||{}).taps||0)-((D.state[a.w]||{}).taps||0)).slice(0,200);
+  $("vs").textContent="可選單字 "+pool.size+" 個；目前等級上限 Level "+cap()+"（會依你的點擊自動微調）；已讀 "+D.articles.filter(a=>a.seen).length+" 篇；點擊 "+D.taps.length+" 次。";
+  $("vl").replaceChildren(...rows.map(({w,s})=>{
+    const t=tp[w],ex=(D.ex[w]||[])[0];
+    const r=h("div",{className:"vr"},h("b",{textContent:w}),h("span",{textContent:names[s]+(t?" · "+t.pos+" "+(t.m||""):"")+(ex?"　例：“"+ex+"”":"")}));
+    const b=h("button",{textContent:D.flags[w]?"還原":"已會"});
+    b.onclick=()=>{if(D.flags[w])delete D.flags[w];else D.flags[w]="known";save();drawVoc()};r.append(b);
+    if(!D.flags[w]){const n=h("button",{textContent:"不想學"});n.onclick=()=>{D.flags[w]="ignore";save();drawVoc()};r.append(n)}
+    if(!pool.has(w)&&!D.flags[w]){const a=h("button",{textContent:"加入"});a.onclick=()=>{D.extra.push(w);save();drawVoc()};r.append(a)}
     return r}));
 }
+
+const FNP=new Set("art pron prep conj aux".split(" ")),NUM={"一":1,"二":2,"三":3,"四":4,"五":5,"六":6};
+function parseWords(t){
+  const out=[],add=(w,m)=>{w=w.toLowerCase().replace("’","'");if(/^[a-z][a-z'-]+$/.test(w)&&!out.some(x=>x.w===w))out.push({w,m})};
+  const official=/第[一二三四五六]級/.test(t);
+  t.split(/\r?\n/).forEach(line=>{
+    line=line.trim();if(!line||/^第[一二三四五六]級$/.test(line))return;
+    if(official){
+      const m=line.match(/^(.+?)\s+((?:n|v|adj|adv|prep|conj|pron|art|aux)\.?[\w./()]*)$/);if(!m)return;
+      const pos=m[2].split(/[\/()]+/).map(x=>x.replace(".","")).filter(Boolean);
+      if(pos.length&&pos.every(p=>FNP.has(p)))return;
+      m[1].split("/").forEach(v=>{const b=v.replace(/\(.*?\)/g,"").trim();add(b,"");const f=v.match(/\((\w{1,4})\)/);if(f&&!/\s/.test(b))add(b+f[1],"")});return;
+    }
+    const p=line.match(/^([A-Za-z][A-Za-z'’-]*)\s*[,;:=\t]\s*([^A-Za-z].*)$/);
+    if(p){add(p[1],p[2].trim());return}
+    (line.match(/[A-Za-z][A-Za-z'’-]*/g)||[]).forEach(w=>add(w,""));
+  });
+  return out;
+}
+let impWords=[];
+function drawImp(){
+  $("impList").replaceChildren(...D.lists.map(l=>{
+    const r=h("div",{className:"vr"},h("b",{textContent:l.name,style:"min-width:120px;font-size:14px"}),h("span",{textContent:l.words.length+" 字"}));
+    const t=h("button",{textContent:l.on?"停用":"啟用"});t.onclick=()=>{l.on=!l.on;save();drawImp()};
+    const d=h("button",{textContent:"刪除"});d.onclick=()=>{D.lists=D.lists.filter(x=>x!==l);save();drawImp()};
+    r.append(t,d);return r}));
+}
+$("impPv").onclick=()=>{
+  impWords=parseWords($("impText").value);const ex=new Set(cands().map(x=>x.w));
+  $("impPrev").textContent="辨識到 "+impWords.length+" 個單字，其中 "+impWords.filter(x=>ex.has(x.w)).length+" 個已在單字池。前 12 個："+impWords.slice(0,12).map(x=>x.w).join("、");
+};
+$("impFile").onchange=async e=>{const f=e.target.files[0];if(f)$("impText").value=await f.text()};
+$("impOk").onclick=()=>{
+  if(!impWords.length)$("impPv").onclick();
+  const ws=impWords;if(!ws.length)return;
+  const dest=$("impDest").value;
+  if(dest==="learning")D.lists.push({id:Date.now(),name:$("impName").value.trim()||"匯入清單",on:true,words:ws.map(x=>({w:x.w,m:x.m}))});
+  else ws.forEach(x=>{D.flags[x.w]=dest});
+  save();$("impText").value="";impWords=[];$("impPrev").textContent="已匯入 "+ws.length+" 個單字";drawImp();
+};
+$("impX").onclick=()=>panel("pvoc");$("vi").onclick=()=>panel("pimp");$("vf").onchange=drawVoc;
 $("va").onclick=()=>{const v=$("vn").value.trim().toLowerCase();if(/^[a-z]+$/.test(v)&&!BASE.includes(v)&&!D.extra.includes(v)){D.extra.push(v);save();$("vn").value="";drawVoc()}};
 $("ve").onclick=async()=>{const t=JSON.stringify(D.taps,null,1);$("vj").hidden=false;$("vj").value=t;try{await navigator.clipboard.writeText(t);$("ve").textContent="已複製"}catch(e){$("vj").select()}};
 $("vx").onclick=()=>{if(confirm("確定清空所有文章、單字狀態與點擊紀錄？（設定會保留）")){D.articles=[];D.state={};D.extra=[];D.taps=[];D.used=[];D.days={};save();location.reload()}};
-$("vc").onclick=()=>panel(null);$("bv").onclick=()=>panel("pvoc");$("bs").onclick=()=>panel("pset");
+$("vc").onclick=()=>panel(null);$("bv").onclick=()=>panel("pvoc");$("bi").onclick=()=>panel("pinfo");$("ic").onclick=()=>panel(null);$("bs").onclick=()=>panel("pset");
 
 D.articles.forEach((a,i)=>add(a,i));
 eng();
