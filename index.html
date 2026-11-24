@@ -292,9 +292,9 @@ function leave(){
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
   leave();hideSheet();
-  if(e.target.id==="more"){cur=-1}
+  if(e.target.id==="more"){cur=-1;D.pos="more";save()}
   else{
-    cur=+e.target.dataset.i;const a=D.articles[cur];a.t0=Date.now();
+    cur=+e.target.dataset.i;const a=D.articles[cur];a.t0=Date.now();if(D.pos!==a.id){D.pos=a.id;save()}
     if(!a.seen){a.seen=1;const k=fd(new Date());D.days[k]=(D.days[k]||0)+1;Object.keys(a.tmap||{}).forEach(b=>{(D.state[b]=D.state[b]||{shown:0,taps:0}).shown++});save();eng()}
   }
   refill();
@@ -395,7 +395,16 @@ $("ve").onclick=async()=>{const t=JSON.stringify(D.taps,null,1);$("vj").hidden=f
 $("vx").onclick=()=>{if(confirm("確定清空所有文章、單字狀態與點擊紀錄？（設定會保留）")){D.articles=[];D.state={};D.extra=[];D.taps=[];D.used=[];D.days={};save();location.reload()}};
 $("vc").onclick=()=>panel(null);$("bv").onclick=()=>panel("pvoc");$("bi").onclick=()=>panel("pinfo");$("ic").onclick=()=>panel(null);$("bs").onclick=()=>panel("pset");
 
-D.articles.forEach((a,i)=>add(a,i));
+const WIN=30,pi=D.articles.findIndex(a=>a.id===D.pos);
+const st0=Math.max(0,Math.min(D.articles.length-WIN,pi<0?D.articles.length:pi));
+D.articles.forEach((a,i)=>{if(i>=st0)add(a,i)});
+function restore(){
+  let el=null;
+  if(D.pos==="more")el=$("more");
+  else{const i=D.articles.findIndex(a=>a.id===D.pos),idx=i>=0?i:D.articles.length-1;el=feed.querySelector('section[data-i="'+idx+'"]')}
+  if(el)feed.scrollTop=el.getBoundingClientRect().top-feed.getBoundingClientRect().top+feed.scrollTop;
+}
+restore();setTimeout(restore,300);
 eng();
 fetch("sources.json?t="+Date.now()).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{
   SRC=j.items||[];drawHN(j.links||[]);
