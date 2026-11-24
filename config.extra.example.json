@@ -1,0 +1,33 @@
+{
+  "_note": "複製成 config.extra.json 才會生效，且只在你自己的電腦執行 node scripts/fetch.mjs 時讀取。這些來源的授權未確認，請自行閱讀條款，僅供個人使用，不要把抓取結果提交到公開 repo。",
+  "feeds": [
+    {
+      "topic": "國際",
+      "name": "BBC World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "license": "授權未確認（BBC）",
+      "ok": false
+    },
+    {
+      "topic": "科技",
+      "name": "BBC Technology",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+      "license": "授權未確認（BBC）",
+      "ok": false
+    }
+  ],
+  "steam": [
+    {
+      "name": "Elden Ring",
+      "appid": 1245620
+    },
+    {
+      "name": "Helldivers 2",
+      "appid": 553850
+    },
+    {
+      "name": "Baldur's Gate 3",
+      "appid": 1086940
+    }
+  ]
+}
