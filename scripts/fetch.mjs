@@ -36,17 +36,20 @@ async function get(url, json) {
 
 async function main() {
   const cfg = JSON.parse(readFileSync("config.json", "utf8"));
+  let extra = {};
+  try { extra = JSON.parse(readFileSync("config.extra.json", "utf8")); } catch (e) {}
+  for (const k of ["feeds", "steam", "wiki"]) cfg[k] = [...(cfg[k] || []), ...(extra[k] || [])];
   const maxAge = (cfg.maxAgeDays || 14) * 864e5, per = cfg.maxPerFeed || 8, now = Date.now();
   const out = [];
   const push = (o) => {
     if (!o.title || !o.text || o.text.length < 60) return;
-    out.push({ id: hid(o.url || o.title), topic: o.topic, title: o.title, text: o.text.slice(0, 1500), url: o.url, source: o.source, date: o.date ? new Date(o.date).toISOString() : null });
+    out.push({ id: hid(o.url || o.title), topic: o.topic, title: o.title, text: o.text.slice(0, 1500), url: o.url, source: o.source, lic: o.license || "", ok: o.ok !== false, date: o.date ? new Date(o.date).toISOString() : null });
   };
 
   for (const f of cfg.feeds || []) {
     try {
       const items = parseFeed(await get(f.url)).filter((i) => i.date && now - i.date < maxAge).slice(0, per);
-      items.forEach((i) => push({ ...i, topic: f.topic, source: f.name }));
+      items.forEach((i) => push({ ...i, topic: f.topic, source: f.name, license: f.license, ok: f.ok }));
       console.log(f.name, items.length);
     } catch (e) { console.error("feed failed:", f.name, e.message); }
   }
@@ -55,7 +58,7 @@ async function main() {
     try {
       const j = await get(`https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=${g.appid}&count=${per}&maxlength=0`, true);
       const items = ((j.appnews && j.appnews.newsitems) || []).filter((i) => now - i.date * 1000 < maxAge);
-      items.forEach((i) => push({ title: clean(i.title), text: clean(i.contents), url: safeUrl(i.url), date: i.date * 1000, topic: "遊戲版本", source: g.name + (i.feedlabel ? " · " + i.feedlabel : "") }));
+      items.forEach((i) => push({ title: clean(i.title), text: clean(i.contents), url: safeUrl(i.url), date: i.date * 1000, topic: "遊戲版本", source: g.name + (i.feedlabel ? " · " + i.feedlabel : ""), license: "授權未確認（Steam）", ok: false }));
       console.log(g.name, items.length);
     } catch (e) { console.error("steam failed:", g.name, e.message); }
   }
@@ -76,9 +79,25 @@ async function main() {
       }
       if (!m) { console.error("wiki section missing:", w.title, JSON.stringify(w.section)); continue; }
       const text = m[1].split("\n").filter((l) => !/^=/.test(l)).join(" ").replace(/\s+/g, " ").trim();
-      push({ title: w.name + " - " + (w.label || [].concat(w.section || "Gameplay")[0]), text, url: "https://en.wikipedia.org/wiki/" + encodeURIComponent(w.title.replace(/ /g, "_")), date: null, topic: w.topic, source: "Wikipedia" });
+      push({ title: w.name + " - " + (w.label || [].concat(w.section || "Gameplay")[0]), text, url: "https://en.wikipedia.org/wiki/" + encodeURIComponent(w.title.replace(/ /g, "_")), date: null, topic: w.topic, source: "Wikipedia", license: w.license || "CC BY-SA 4.0", ok: true });
       console.log(w.name, "wiki ok");
     } catch (e) { console.error("wiki failed:", w.title, e.message); }
+  }
+
+  if (cfg.current) {
+    try {
+      const d = new Date(), p = (n) => String(n).padStart(2, "0");
+      const j = await get(`https://en.wikipedia.org/api/rest_v1/feed/featured/${d.getUTCFullYear()}/${p(d.getUTCMonth() + 1)}/${p(d.getUTCDate())}`, true);
+      const news = (j.news || []).slice(0, cfg.current.count || 6);
+      news.forEach((n) => {
+        const ls = (n.links || []).filter((l) => l.extract).slice(0, 2);
+        const story = clean(n.story || "");
+        const first = ls[0] || (n.links || [])[0];
+        const page = first ? (first.titles && first.titles.canonical) || first.title || "" : "";
+        push({ title: story.slice(0, 120), text: story + " " + ls.map((l) => clean(l.extract)).join(" "), url: page ? "https://en.wikipedia.org/wiki/" + encodeURIComponent(page) : "https://en.wikipedia.org/wiki/Portal:Current_events", date: Date.now(), topic: cfg.current.topic, source: "Wikipedia In the news", license: "CC BY-SA 4.0", ok: true });
+      });
+      console.log("current", news.length);
+    } catch (e) { console.error("current failed:", e.message); }
   }
 
   let links = [];
