@@ -1,6 +1,17 @@
 {
- "updated": "2026-11-25T08:29:42.602Z",
+ "updated": "2026-11-25T21:39:45.117Z",
  "items": [
+  {
+   "id": "a3847e1008e8",
+   "topic": "國際",
+   "title": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nat",
+   "text": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nations final , overturning the Confederation of African Football 's decision to declare Morocco as the winner of the tournament. The 2025 Africa Cup of Nations final was a football match played on 18 January 2026 at the Prince Moulay Abdellah Stadium in Rabat, Morocco. It determined the winners of the 2025 Africa Cup of Nations (AFCON), the 35th edition of the biennial African tournament organised by the Confederation of African Football (CAF), and was contested between Senegal and hosts Morocco. The Court of Arbitration for Sport is an international body established in 1984 by the International Olympic Committee to settle disputes related to sport through arbitration. Its headquarters are in Lausanne, Switzerland, and its courts are located in New York City, Sydney, and Lausanne. Temporary courts are established in current Olympic host cities.",
+   "url": "https://en.wikipedia.org/wiki/2025_Africa_Cup_of_Nations_final",
+   "source": "Wikipedia In the news",
+   "lic": "CC BY-SA 4.0",
+   "ok": true,
+   "date": "2026-11-25T21:39:44.748Z"
+  },
   {
    "id": "908e279920ec",
    "topic": "國際",
@@ -10,18 +21,18 @@
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T08:29:42.300Z"
+   "date": "2026-11-25T21:39:44.748Z"
   },
   {
    "id": "859a0f8c0e32",
    "topic": "國際",
    "title": "Mongolian president Ukhnaagiin Khürelsükh announces his resignation in response to corruption allegations.",
-   "text": "Mongolian president Ukhnaagiin Khürelsükh announces his resignation in response to corruption allegations. Ukhnaagiin Khürelsükh is a Mongolian politician who served as the country's president from 2021 to 2026. He previously served as the prime minister from 2017 to 2021 and was elected to the Parliament of Mongolia four times – in 2000, 2004, 2012, and 2020.",
+   "text": "Mongolian president Ukhnaagiin Khürelsükh announces his resignation in response to corruption allegations. Ukhnaagiin Khürelsükh is a Mongolian politician who served as President of Mongolia from 2021 to 2026. He previously served as Prime Minister of Mongolia from 2017 to 2021 and was elected to the Parliament of Mongolia four times – in 2000, 2004, 2012, and 2020.",
    "url": "https://en.wikipedia.org/wiki/Ukhnaagiin_Kh%C3%BCrels%C3%BCkh",
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T08:29:42.300Z"
+   "date": "2026-11-25T21:39:44.748Z"
   },
   {
    "id": "f8f8ae79c6b4",
@@ -32,18 +43,106 @@
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T08:29:42.300Z"
+   "date": "2026-11-25T21:39:44.748Z"
   },
   {
-   "id": "e02dca2e6f61",
-   "topic": "國際",
-   "title": "The video game Grand Theft Auto VI achieves US$3.79 billion in sales on its launch day, more than any other entertainmen",
-   "text": "The video game Grand Theft Auto VI achieves US$3.79 billion in sales on its launch day, more than any other entertainment product in history. Grand Theft Auto VI is a 2026 action-adventure game developed and published by Rockstar Games. It is the eighth main entry in the Grand Theft Auto series, following Grand Theft Auto V (2013), and the sixteenth entry overall. Set in the fictional US state of Leonida, based on Florida, the story follows the criminal duo of Jason Duval and Lucia Caminos as they lead a life of crime to secure a better life and escape from corrupt police officers in a state-wide criminal conspiracy. The game's open world allows players to freely roam Leonida and its Miami-inspired Vice City and engage in various side activities.",
-   "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI",
-   "source": "Wikipedia In the news",
-   "lic": "CC BY-SA 4.0",
+   "id": "ecb5d293ef4c",
+   "topic": "科技",
+   "title": "NASA Enhances Supplier Program, Announces Mentor-Protégé Agreement",
+   "text": "How NASA works with small businesses is evolving, and as a result, the agency is strengthening the domestic aerospace industrial base to support future exploration missions through its recently renamed Small Business Supplier Development Program. As part of the program, NASA announced its latest Mentor-Protégé Agreement, this one signed between The Boeing Company and GRACE",
+   "url": "https://www.nasa.gov/organizations/osbp/nasa-enhances-supplier-program-announces-mentor-protege-agreement/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
    "ok": true,
-   "date": "2026-11-25T08:29:42.300Z"
+   "date": "2026-11-25T19:06:56.000Z"
+  },
+  {
+   "id": "8cd7bb44a04c",
+   "topic": "科技",
+   "title": "NASA Eyes Crop Candidates for Future Menus",
+   "text": "As NASA prepares for future missions to the Moon and Mars, researchers are studying crops that could provide astronauts with fresh food, nutrition, and variety far from Earth. Such crop variety can help with menus in deep space, something top of mind this week as the nation celebrates Thanksgiving. Recent testing points to strawberries,",
+   "url": "https://science.nasa.gov/directorates/smd/nasa-eyes-crop-candidates-for-future-menus/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T17:53:42.000Z"
+  },
+  {
+   "id": "afc105b15bba",
+   "topic": "科技",
+   "title": "Childhood, Career Come Full Circle for Budget Analyst at NASA Goddard",
+   "text": "Conversations about NASA were the norm around the dinner table during Ashley Knight’s childhood. Her parents worked at NASA’s Goddard Space Flight Center in Greenbelt, Maryland, and discussions about happenings at the agency continued even when they came home from the office. “I remember a poignant dialogue we had after the space shuttle Challenger disaster,”",
+   "url": "https://www.nasa.gov/centers-and-facilities/goddard/childhood-career-come-full-circle-for-budget-analyst-at-nasa-goddard/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T16:47:29.000Z"
+  },
+  {
+   "id": "0a54c50cca1e",
+   "topic": "科技",
+   "title": "Eye of the Sahara",
+   "text": "The Richat Structure, also known as the &#8220;Eye of the Sahara,&#8221; is seen from the International Space Station as it orbited above on Nov. 14, 2026. It is an eroded geological dome about 100 million years old created by igneous activity and uplift in the nation of Mauritania. In this type of geologic structure, rocks",
+   "url": "https://www.nasa.gov/image-article/eye-of-the-sahara/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T16:21:04.000Z"
+  },
+  {
+   "id": "1d9cf67cf255",
+   "topic": "科技",
+   "title": "NASA’s Hubble Views Ocean of Stars in Groundwork for Roman",
+   "text": "These Hubble observations are part of a survey that will help researchers better interpret upcoming Nancy Grace Roman Space Telescope observations as they seek to characterize the stars and search for exoplanets in this busy region of our galaxy.",
+   "url": "https://science.nasa.gov/missions/hubble/nasas-hubble-views-ocean-of-stars-in-groundwork-for-roman/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T14:56:54.000Z"
+  },
+  {
+   "id": "eb55b1ab7fee",
+   "topic": "國際",
+   "title": "Jailed for being poor, forgotten by slow courts in Nigeria, saved by strangers online",
+   "text": "The Nigerian Correctional Service said that most people in its custody were still waiting for trial. They have not been found guilty of any crime.",
+   "url": "https://globalvoices.org/2026/11/25/jailed-for-being-poor-forgotten-by-slow-courts-in-nigeria-saved-by-strangers-online/",
+   "source": "Global Voices",
+   "lic": "CC BY",
+   "ok": true,
+   "date": "2026-11-25T08:33:17.000Z"
+  },
+  {
+   "id": "f8165500d54b",
+   "topic": "科技",
+   "title": "APOD: 2026 November 25 – SPHEREx Seeing Through Dust",
+   "text": "APOD Science APOD APOD: 2026 November 25 –… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. To view this",
+   "url": "https://science.nasa.gov/image-article/apod-2026-november-25-spherex-seeing-through-dust/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T05:05:00.000Z"
+  },
+  {
+   "id": "cecb33e1b7ed",
+   "topic": "科技",
+   "title": "Georgia’s Pecan Belt",
+   "text": "Since an early-1900s planting boom, orchards along the Flint River in southwest Georgia have become a center of U.S. pecan production.",
+   "url": "https://science.nasa.gov/earth/earth-observatory/georgias-pecan-belt/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-25T05:00:00.000Z"
+  },
+  {
+   "id": "f78eeb5c4dbc",
+   "topic": "科技",
+   "title": "NASA+ Content Coming to Big Screen at Greenbelt, Maryland Cinema",
+   "text": "NASA announced Monday that NASA+ content has found its first theatrical home at The Greenbelt Cinema in Greenbelt, Maryland, expanding the agency’s reach across major viewing platforms and bringing space even closer to home. “The National Aeronautics and Space Act of 1958 calls us to share our story of space exploration with the broadest possible",
+   "url": "https://www.nasa.gov/nasa/nasa-content-coming-to-big-screen-at-greenbelt-maryland-cinema/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-24T21:14:36.000Z"
   },
   {
    "id": "5f09178094f8",
@@ -145,17 +244,6 @@
    "date": "2026-11-20T00:00:00.000Z"
   },
   {
-   "id": "b0631e0ce5fd",
-   "topic": "國際",
-   "title": "Family stories keep alive Georgia’s democratic past and the memory of Soviet repression",
-   "text": "“Family stories can open up broader conversations about democracy, human rights, repression, and civic responsibility”",
-   "url": "https://globalvoices.org/2026/11/19/sharing-family-histories-about-a-region-in-georgias-democratic-past-and-soviet-repression/",
-   "source": "Global Voices",
-   "lic": "CC BY",
-   "ok": true,
-   "date": "2026-11-19T08:00:05.000Z"
-  },
-  {
    "id": "bb697c970496",
    "topic": "科技",
    "title": "Sierra Snow Season Spins Up",
@@ -236,7 +324,7 @@
    "id": "f5b3ff01ae76",
    "topic": "科技人物",
    "title": "Jensen Huang - profile",
-   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in October 2025. In 2021 and 2024, Time magazine included him in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for his contributions to machine learning and computational science. In November 2026, it was reported that Huang had had multiple extramarital affairs, including one with Chinese business executive ",
+   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in October 2025. In 2021 and 2024, Time magazine included him in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for his contributions to machine learning and computational science. In November 2026, it was reported that Huang had multiple extramarital affairs, including one with Chinese business executive Alic",
    "url": "https://en.wikipedia.org/wiki/Jensen_Huang",
    "source": "Wikipedia",
    "lic": "CC BY-SA 4.0",
@@ -258,7 +346,7 @@
    "id": "14b025acf5d7",
    "topic": "科技人物",
    "title": "Elon Musk - profile",
-   "text": "Elon Reeve Musk ( ; born June 28, 1971) is an industrialist, futurist, and former public official. He is the chief executive officer and largest shareholder of Tesla and SpaceX and has been the wealthiest person in the world since 2025, becoming the only trillionaire in history (in terms of US dollars) in 2026; as of November 2026, Forbes estimates his net worth to be $849.7 billion. Born into the wealthy Musk family in Pretoria, South Africa, Musk emigrated to Canada in 1989; he has Canadian citizenship as his mother was born there. He received bachelor's degrees in 1997 from the University of Pennsylvania before moving to California, United States, to pursue business ventures. In 1995, he co-founded Zip2, a web software company. Following its sale in 1999, he co-founded X.com, an e-commerce payment system that merged with Confinity in March 2000 to form PayPal. Musk also became an American citizen in 2002. In 2002, Musk founded and became CEO and chief engineer of SpaceX, a space technology company. Musk joined Tesla as an angel investor in 2004 and became its CEO and product architect in 2008. In 2015, Musk co-founded OpenAI to advance artificial intelligence (AI) research, but later left; his growing discontent with the organization's direction and leadership in the AI boom in the 2020s led him to establish xAI, which became a subsidiary of SpaceX in 2026. In 2022, he acquired Twitter, a social networking service, and made significant changes, including rebranding it as X",
+   "text": "Elon Reeve Musk ( ; born June 28, 1971) is an industrialist. He is the chief executive officer and largest shareholder of Tesla and SpaceX and has been the wealthiest person in the world since 2025, becoming the only trillionaire in history (in terms of US dollars) in 2026; as of November 2026, Forbes estimates his net worth to be $849.7 billion. Born into the wealthy Musk family in Pretoria, South Africa, Musk emigrated to Canada in 1989; he has Canadian citizenship as his mother was born there. He received bachelor's degrees in 1997 from the University of Pennsylvania before moving to California, United States, to pursue business ventures. In 1995, he co-founded Zip2, a web software company. Following its sale in 1999, he co-founded X.com, an e-commerce payment system that merged with Confinity in March 2000 to form PayPal. Musk also became an American citizen in 2002. In 2002, Musk founded and became CEO and chief engineer of SpaceX, a space technology company. Musk joined Tesla as an angel investor in 2004 and became its CEO and product architect in 2008. In 2015, Musk co-founded OpenAI to advance artificial intelligence (AI) research, but later left; his growing discontent with the organization's direction and leadership in the AI boom in the 2020s led him to establish xAI, which became a subsidiary of SpaceX in 2026. In 2022, he acquired Twitter, a social networking service, and made significant changes, including rebranding it as X in 2023. His other businesses include",
    "url": "https://en.wikipedia.org/wiki/Elon_Musk",
    "source": "Wikipedia",
    "lic": "CC BY-SA 4.0",
@@ -290,74 +378,74 @@
  ],
  "links": [
   {
-   "title": "Matrix Multiplication is Θ(n^2.25) [pdf]",
-   "url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
-   "hn": "https://news.ycombinator.com/item?id=50637220",
-   "score": 554,
-   "comments": 275
+   "title": "1Password Security Incident",
+   "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
+   "hn": "https://news.ycombinator.com/item?id=50644817",
+   "score": 808,
+   "comments": 333
   },
   {
-   "title": "Button Sounds – collection of professionally-recorded button clicks and presses",
-   "url": "https://buttons.joshwcomeau.com/",
-   "hn": "https://news.ycombinator.com/item?id=50638032",
-   "score": 297,
-   "comments": 31
+   "title": "Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening",
+   "url": "https://scottaaronson.blog/?p=10379",
+   "hn": "https://news.ycombinator.com/item?id=50646108",
+   "score": 519,
+   "comments": 373
   },
   {
-   "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
-   "url": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
-   "hn": "https://news.ycombinator.com/item?id=50637686",
-   "score": 196,
-   "comments": 74
+   "title": "A few questions for the guy who went snorkeling in a Home Depot retention pond",
+   "url": "https://www.vox.com/down-to-earth/511999/home-depot-retention-pond-snorkel-joseph-ricketts",
+   "hn": "https://news.ycombinator.com/item?id=50643129",
+   "score": 385,
+   "comments": 93
   },
   {
-   "title": "Show HN: Old Nvidia and ATI tech demos, running again in the browser",
-   "url": "https://gpu-demo-gallery.pages.dev/",
-   "hn": "https://news.ycombinator.com/item?id=50638503",
-   "score": 80,
-   "comments": 17
+   "title": "GPT-6.2 Astra is the first model to beat Googlers' code golf records",
+   "url": "https://bjin.github.io/go-codegolf-benchmark/#leaderboard",
+   "hn": "https://news.ycombinator.com/item?id=50601280",
+   "score": 56,
+   "comments": 9
   },
   {
-   "title": "Ternary Bonsai 2.5 27B",
-   "url": "https://prismml.com/news/bonsai-2-5-27b",
-   "hn": "https://news.ycombinator.com/item?id=50633922",
-   "score": 436,
-   "comments": 137
+   "title": "SSH is a GUI framework",
+   "url": "https://zydra.sh/articles/ssh-is-a-gui-framework/",
+   "hn": "https://news.ycombinator.com/item?id=50589784",
+   "score": 71,
+   "comments": 36
   },
   {
-   "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
-   "url": "https://greydanus.github.io/2026/11/12/pengpt/",
-   "hn": "https://news.ycombinator.com/item?id=50637056",
-   "score": 221,
-   "comments": 39
+   "title": "The polynomial Hirsch conjecture is false [pdf]",
+   "url": "https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf",
+   "hn": "https://news.ycombinator.com/item?id=50644980",
+   "score": 76,
+   "comments": 13
   },
   {
-   "title": "Taking over US Treasury subdomains for $3 each",
-   "url": "https://www.intruder.io/research/taking-over-us-treasury-subdomains-for-3-each",
-   "hn": "https://news.ycombinator.com/item?id=50638478",
-   "score": 64,
-   "comments": 10
+   "title": "Britain's ghost stations",
+   "url": "https://spectator.com/article/britains-ghost-stations-are-fascinating/",
+   "hn": "https://news.ycombinator.com/item?id=50645074",
+   "score": 58,
+   "comments": 12
   },
   {
-   "title": "Bypassing iOS Safari's 60 FPS Limit to Build Web Applications That Feel Native",
-   "url": "https://rida.dev/blog/bypassing-ios-safari-60-fps-limit",
-   "hn": "https://news.ycombinator.com/item?id=50637890",
-   "score": 140,
-   "comments": 49
+   "title": "I checked Clojure's core with Lean and found unreported bugs",
+   "url": "https://s.conao3.com/blog/2026/e4f733",
+   "hn": "https://news.ycombinator.com/item?id=50642939",
+   "score": 144,
+   "comments": 52
   },
   {
-   "title": "The algebra of dependent types (2025)",
-   "url": "https://dotat.at/@/2025-05-28-types.html",
-   "hn": "https://news.ycombinator.com/item?id=50623866",
-   "score": 15,
-   "comments": 1
+   "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+   "url": "https://github.com/xoxorwr/pw-loudness-eq",
+   "hn": "https://news.ycombinator.com/item?id=50641171",
+   "score": 294,
+   "comments": 165
   },
   {
-   "title": "Marginalia Search, Money, C++, Rust, AI, Stuff",
-   "url": "https://www.marginalia.nu/log/a_141_marginalia_update/",
-   "hn": "https://news.ycombinator.com/item?id=50638220",
-   "score": 91,
-   "comments": 35
+   "title": "Google releases Cogentic papers on integer factorization, discrete logs and more",
+   "url": "https://github.com/google-research/google-research/tree/master/cogentic_research_papers",
+   "hn": "https://news.ycombinator.com/item?id=50642086",
+   "score": 396,
+   "comments": 310
   }
  ]
 }
