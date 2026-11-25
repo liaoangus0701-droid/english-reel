@@ -44,12 +44,23 @@ button:focus-visible,.w:focus-visible,input:focus-visible{outline:2px solid var(
 .vr b{font-family:Lora,Georgia,serif;font-size:16px;min-width:84px}
 .vr span{flex:1;color:var(--muted)}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+header{order:0}#feed{order:1}
+.sheet{position:static;order:2;width:100%;max-width:640px;align-self:center;box-sizing:border-box;padding:14px 20px;box-shadow:none;border-radius:14px 14px 0 0}
+#feed.pin{scroll-snap-type:none}
+#stat{order:3;width:100%;max-width:640px;align-self:center;box-sizing:border-box;max-height:45vh;overflow:auto;background:var(--card);border-top:1px solid var(--line);padding:6px 18px 10px}
+#stat[hidden]{display:none}
+footer{order:4}
+#eng{background:none;border:0;padding:4px 0;color:var(--muted);font-size:13px}
+.sh{font-size:12px;color:var(--muted);margin:10px 0 3px}
+.sr{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:3px 0}
+.sr b{font-weight:500;text-align:right}
 </style>
 </head>
 <body>
 <header><b>我的英文滑讀</b><span id="st"></span><span><button id="bi">來源</button> <button id="bv">單字本</button> <button id="bs">設定</button></span></header>
 <main id="feed"><section id="more"><h2>下一篇準備中</h2><p class="zh" id="mt">讀取最新資料中…</p><div class="row"><button id="gb">立即生成一篇</button></div><div id="hn" style="margin-top:18px"></div></section></main>
-<footer><span id="eng"></span><span>上滑看下一篇，點單字看意思</span></footer>
+<div id="stat" hidden><div id="sg"></div></div>
+<footer><button id="eng" aria-expanded="false"></button><span>上滑看下一篇，點單字看意思</span></footer>
 
 <div id="sheet" class="sheet" hidden><div id="sw"></div><div id="sm"></div><span id="stg" class="tag"></span> <button id="cl" style="float:right">關閉</button></div>
 
@@ -58,6 +69,7 @@ button:focus-visible,.w:focus-visible,input:focus-visible{outline:2px solid var(
   <label>Gemini API 金鑰（只存在這個瀏覽器）</label><input id="ck" type="password" autocomplete="off" placeholder="貼上金鑰">
   <label>模型名稱</label><input id="cm">
   <label>備用模型（主模型忙碌時改用，可留空）</label><input id="cm2">
+  <label>每日 API 上限（選填，只用來顯示，例如 12 / 20）</label><input id="climit" type="number" min="0">
   <label>想看的主題（可多選）</label><div class="chips" id="ct"></div>
   <label>來源範圍</label><select id="cst"><option value="1">只用授權明確的來源（建議）</option><option value="0">也顯示授權未確認的來源</option></select>
   <label>難度</label><select id="cd"><option value="0">簡單</option><option value="1">普通</option><option value="2">挑戰</option></select>
@@ -100,12 +112,12 @@ const h=(t,p={},...k)=>{const e=document.createElement(t);Object.assign(e,p);k.f
 const BASE="answer begin brave bridge careful choose clever collect dangerous decide defeat different early enemy escape explore famous finally follow future gather guide hidden honest important invite journey kind laugh lesson local mistake modern narrow notice offer ordinary perfect plan protect quiet reach reward safe search secret share simple special strange strong surprise travel useful village wander warn wonder worth".split(" ");
 const TOPICS=["國際","科技","科技人物","遊戲版本","遊戲攻略","遊戲劇情"];
 const LV=["very easy: sentences under 10 words, only the most basic vocabulary","easy: sentences mostly under 15 words","moderate: a mix of short and longer sentences, with a few when/if/that clauses"],LN=[60,100,150];
-let D={articles:[],state:{},extra:[],taps:[],used:[],days:{},calls:{},out:{},lists:[],flags:{},top:{},off:0,hist:[],ex:{},cfg:{key:"",model:"gemini-3.5-flash-lite",model2:"gemini-3.1-flash-lite",topics:["國際","科技"],level:1,len:1,strict:1}};
+let D={articles:[],state:{},extra:[],taps:[],used:[],days:{},calls:{},cm:{},out:{},lists:[],flags:{},top:{},off:0,hist:[],ex:{},cfg:{key:"",model:"gemini-3.5-flash-lite",model2:"gemini-3.1-flash-lite",topics:["國際","科技"],level:1,len:1,strict:1}};
 try{const s=JSON.parse(localStorage.getItem("reel_v2"));if(s)D={...D,...s,cfg:{...D.cfg,...s.cfg}}}catch(e){}
 if(D.cfg.model2==="gemini-2.5-flash-lite")D.cfg.model2="gemini-3.1-flash-lite";
 const save=()=>{try{localStorage.setItem("reel_v2",JSON.stringify(D))}catch(e){}};
 const feed=$("feed"),sents=t=>t.split(/(?<=[.!?])\s+/);
-let SRC=[],busy=false,failed=false,cur=-1;
+let SRC=[],busy=false,failed=false,cur=-1,UPD="";
 function drawHN(l){
   const box=$("hn");
   if(!l.length){box.replaceChildren();return}
@@ -124,7 +136,7 @@ const ago=t=>{const m=(Date.now()-Date.parse(t))/6e4;return m<60?Math.max(1,Math
 function eng(){
   let d=new Date();if(!D.days[fd(d)])d.setDate(d.getDate()-1);
   let n=0;while(D.days[fd(d)]){n++;d.setDate(d.getDate()-1)}
-  $("eng").textContent=(n?"連續 "+n+" 天 · ":"")+"今日 "+(D.days[fd(new Date())]||0)+" 篇 · API "+(D.calls[fd(new Date())]||0)+" 次";
+  $("eng").textContent=(n?"連續 "+n+" 天 · ":"")+"今日 "+(D.days[fd(new Date())]||0)+" 篇 · API "+(D.calls[fd(new Date())]||0)+" 次 "+($("stat").hidden?"▴":"▾");if(!$("stat").hidden)drawStat();
 }
 
 let WORDS=[];
@@ -192,7 +204,7 @@ async function gem(prompt,max,temp){
     if(until>Date.now()){soon=soon?Math.min(soon,until):until;continue}
     for(let i=0;i<3;i++){
       try{
-        const k=fd(new Date());D.calls[k]=(D.calls[k]||0)+1;save();eng();
+        const k=fd(new Date());D.calls[k]=(D.calls[k]||0)+1;const cm=D.cm[model]=D.cm[model]||{};cm[k]=(cm[k]||0)+1;save();eng();
         const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":c.key},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",temperature:temp,maxOutputTokens:max}})});
         const j=await res.json().catch(()=>({}));
         if(!res.ok){const e=new Error(j.error&&j.error.message||res.status);e.code=res.status;throw e}
@@ -295,14 +307,22 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.target.id==="more"){cur=-1;D.pos="more";save()}
   else{
     cur=+e.target.dataset.i;const a=D.articles[cur];a.t0=Date.now();if(D.pos!==a.id){D.pos=a.id;save()}
-    if(!a.seen){a.seen=1;const k=fd(new Date());D.days[k]=(D.days[k]||0)+1;Object.keys(a.tmap||{}).forEach(b=>{(D.state[b]=D.state[b]||{shown:0,taps:0}).shown++});save();eng()}
+    if(!a.seen){a.seen=1;a.sa=Date.now();const k=fd(new Date());D.days[k]=(D.days[k]||0)+1;Object.keys(a.tmap||{}).forEach(b=>{(D.state[b]=D.state[b]||{shown:0,taps:0}).shown++});save();eng()}
   }
   refill();
-}),{root:feed,threshold:.6});
+}),{root:feed,rootMargin:"-45% 0px -45% 0px",threshold:0});
 io.observe($("more"));
 document.addEventListener("visibilitychange",()=>{if(document.hidden)leave()});
 
-function hideSheet(){$("sheet").hidden=true;document.querySelectorAll(".w.on").forEach(x=>x.classList.remove("on"))}
+function keepVisible(el){
+  feed.classList.add("pin");
+  requestAnimationFrame(()=>{
+    const f=feed.getBoundingClientRect(),r=el.getBoundingClientRect();
+    if(r.bottom>f.bottom-14)feed.scrollTop+=r.bottom-f.bottom+14;
+    else if(r.top<f.top+8)feed.scrollTop-=f.top+8-r.top;
+  });
+}
+function hideSheet(){$("sheet").hidden=true;feed.classList.remove("pin");document.querySelectorAll(".w.on").forEach(x=>x.classList.remove("on"))}
 let tapN=0;
 async function tap(el){
   const id=++tapN,a=D.articles[+el.closest("section").dataset.i],w=el.dataset.w;
@@ -311,7 +331,7 @@ async function tap(el){
   hideSheet();el.classList.add("on");
   $("sw").textContent=el.textContent;$("stg").textContent=t?"目標單字":"非目標單字";$("stg").className="tag"+(t?" t":"");
   let raw=look(a,w);
-  $("sm").textContent=raw?"":"查詢中…";$("sheet").hidden=false;
+  $("sm").textContent=raw?"":"查詢中…";$("sheet").hidden=false;keepVisible(el);
   if(!raw){try{await askWords(a,toks(a.text).filter(x=>!look(a,x)));raw=look(a,w)}catch(e){}}
   const x=raw?raw.split("|"):["",""],pos=x[0],m=x.slice(1).join("|");
   if(id===tapN)$("sm").textContent=raw?(m?pos+" "+m:pos):"查不到，請再點一次重試";
@@ -323,13 +343,13 @@ $("cl").onclick=hideSheet;$("gb").onclick=()=>{failed=false;gen()};
 
 function panel(id){["pset","pvoc","pinfo","pimp"].forEach(p=>$(p).hidden=p!==id);if(id==="pset")drawSet();if(id==="pvoc")drawVoc();if(id==="pinfo")drawInfo();if(id==="pimp")drawImp()}
 function drawSet(){
-  $("ck").value=D.cfg.key;$("cm").value=D.cfg.model;$("cst").value=D.cfg.strict?1:0;$("cm2").value=D.cfg.model2||"";$("cd").value=D.cfg.level;$("cg").value=D.cfg.len;
+  $("ck").value=D.cfg.key;$("cm").value=D.cfg.model;$("cst").value=D.cfg.strict?1:0;$("cm2").value=D.cfg.model2||"";$("climit").value=D.cfg.limit||"";$("cd").value=D.cfg.level;$("cg").value=D.cfg.len;
   const all=[...new Set([...TOPICS,...SRC.map(s=>s.topic),...D.cfg.topics])];
   $("ct").replaceChildren(...all.map(t=>{
     const b=h("button",{textContent:t,className:D.cfg.topics.includes(t)?"on":""});
     b.onclick=()=>{const k=D.cfg.topics;k.includes(t)?k.splice(k.indexOf(t),1):k.push(t);b.className=k.includes(t)?"on":""};return b}));
 }
-$("cs").onclick=()=>{D.cfg.key=$("ck").value.trim();D.cfg.model=$("cm").value.trim()||"gemini-3.5-flash-lite";D.cfg.model2=$("cm2").value.trim();D.cfg.strict=+$("cst").value;D.cfg.level=+$("cd").value;D.cfg.len=+$("cg").value;save();panel(null);failed=false;refill()};
+$("cs").onclick=()=>{D.cfg.key=$("ck").value.trim();D.cfg.model=$("cm").value.trim()||"gemini-3.5-flash-lite";D.cfg.model2=$("cm2").value.trim();D.cfg.limit=+$("climit").value||0;D.cfg.strict=+$("cst").value;D.cfg.level=+$("cd").value;D.cfg.len=+$("cg").value;save();panel(null);failed=false;refill()};
 function drawInfo(){
   const m={};SRC.forEach(s=>{const x=m[s.source]=m[s.source]||{n:0,lic:s.lic||"授權未確認",ok:s.ok!==false,t:s.topic};x.n++});
   $("il").replaceChildren(...Object.entries(m).map(([k,x])=>h("div",{className:"vr"},h("b",{textContent:k,style:"min-width:120px;font-size:14px"}),h("span",{textContent:x.t+" · "+x.lic+(x.ok?"":"（預設不顯示）")}),h("span",{textContent:x.n+" 則",style:"flex:none"}))));
@@ -397,6 +417,36 @@ $("vc").onclick=()=>panel(null);$("bv").onclick=()=>panel("pvoc");$("bi").onclic
 
 const WIN=30,pi=D.articles.findIndex(a=>a.id===D.pos);
 const st0=Math.max(0,Math.min(D.articles.length-WIN,pi<0?D.articles.length:pi));
+
+function drawStat(){
+  const today=fd(new Date()),now=Date.now(),DAY=864e5;
+  const dw=a=>(a.dwell||0)+(a.t0?Math.round((now-a.t0)/1000):0);
+  const fm=s=>s>=60?Math.floor(s/60)+" 分 "+(s%60)+" 秒":s+" 秒";
+  const pc=x=>(x*100).toFixed(1)+"%",avg=(arr,k)=>arr.length?arr.reduce((s,x)=>s+x[k],0)/arr.length:0;
+  const st=D.articles.filter(a=>a.sa&&fd(new Date(a.sa))===today);
+  const tot=st.reduce((s,a)=>s+dw(a),0);
+  const ratio=st.map(a=>{const all=toks(a.text).length||1,t=D.taps.filter(x=>x.art===a.id);return{all:new Set(t.map(x=>x.w)).size/all,tg:new Set(t.filter(x=>x.target).map(x=>x.w)).size/all}});
+  const tw={};D.taps.filter(t=>fd(new Date(t.at))===today).forEach(t=>{tw[t.w]=(tw[t.w]||0)+1});
+  const topw=Object.entries(tw).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([w,c])=>w+" ×"+c).join("、")||"—";
+  const cnt={};cands().forEach(x=>{const s=stat(x.w);cnt[s]=(cnt[s]||0)+1});
+  const score=a=>{const wc=toks(a.text).length||60,exp=Math.max(8,wc/2.5),s=dw(a);return a.liked||a.saved?1:s>=exp*.6?.6:s<Math.min(3,exp*.3)?0:.3};
+  const by={};D.articles.filter(a=>a.seen&&a.sa&&now-a.sa<7*DAY).forEach(a=>{(by[a.topic]=by[a.topic]||[]).push(score(a))});
+  const tops=Object.entries(by).filter(([t,v])=>v.length>=2).map(([t,v])=>[t,v.reduce((a,b)=>a+b,0)/v.length,v.length]).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([t,s,n])=>t+" "+Math.round(s*100)+"%（"+n+" 篇）").join(" · ")||"資料還不夠（每個主題至少讀 2 篇）";
+  const hs=D.hist||[],hm=hs.length?(hs.reduce((a,b)=>a+b,0)/hs.length).toFixed(1):"—";
+  const rem={};SRC.filter(s=>!D.used.includes(s.id)&&(!+D.cfg.strict||s.ok!==false)).forEach(s=>{rem[s.topic]=(rem[s.topic]||0)+1});
+  const outs=Object.entries(D.out).filter(([m,u])=>u>now).map(([m,u])=>m+" 約 "+fmtWait(u-now)+" 後恢復").join("；")||"無";
+  const per=Object.entries(D.cm).map(([m,c])=>m+" "+(c[today]||0)).join("、");
+  const sec=(t,rows)=>[h("div",{className:"sh",textContent:t}),...rows.map(([k,v])=>h("div",{className:"sr"},h("span",{textContent:k}),h("b",{textContent:v})))];
+  $("sg").replaceChildren(
+    ...sec("今天",[["閱讀篇數",(D.days[today]||0)+" 篇"],["停留時間",st.length?fm(tot)+"（平均 "+fm(Math.round(tot/st.length))+"）":"—"],["API 呼叫",(D.calls[today]||0)+(D.cfg.limit?" / "+D.cfg.limit:"")+" 次"],["各模型",per||"—"]]),
+    ...sec("單字",[["平均每篇被點比例",ratio.length?pc(avg(ratio,"all"))+"（目標 "+pc(avg(ratio,"tg"))+"、非目標 "+pc(avg(ratio,"all")-avg(ratio,"tg"))+"）":"—"],["今天最常點",topw],["單字狀態","新字 "+(cnt.new||0)+" · 學習中 "+(cnt.learning||0)+" · 熟悉 "+(cnt.familiar||0)+" · 已掌握 "+(cnt.mastered||0)]]),
+    ...sec("興趣",[["近 7 天最感興趣",tops]]),
+    ...sec("難度",[["等級上限","Level "+cap()+"（"+(D.off>.2?"已自動調高":D.off<-.2?"已自動調低":"維持原設定")+"）"],["最近每百字點擊",hm+" 個"]]),
+    ...sec("系統",[["資料更新",UPD?ago(UPD):"—"],["各主題剩餘來源",Object.entries(rem).map(([t,c])=>t+" "+c).join(" · ")||"—"],["未讀庫存",(D.articles.length-(cur<0?D.articles.length:cur+1))+" 篇"],["額度狀態",outs]])
+  );
+}
+$("eng").onclick=()=>{const s=$("stat");s.hidden=!s.hidden;$("eng").setAttribute("aria-expanded",String(!s.hidden));eng();if(!s.hidden)drawStat()};
+
 D.articles.forEach((a,i)=>{if(i>=st0)add(a,i)});
 function restore(){
   let el=null;
@@ -407,7 +457,7 @@ function restore(){
 restore();setTimeout(restore,300);
 eng();
 fetch("sources.json?t="+Date.now()).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{
-  SRC=j.items||[];drawHN(j.links||[]);
+  SRC=j.items||[];UPD=j.updated||"";drawHN(j.links||[]);
   if(!D.cfg.key)say("請先到設定填入 Gemini API 金鑰");else if(!SRC.length)say("資料庫還是空的，請先在 GitHub 手動執行一次更新");else{say("");refill()}
 }).catch(()=>say("讀不到 sources.json（需和這個檔案放在同一個網站）"));
 </script>
