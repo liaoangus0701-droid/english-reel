@@ -47,9 +47,10 @@ button:focus-visible,.w:focus-visible,input:focus-visible{outline:2px solid var(
 header{order:0}#feed{order:1}
 .sheet{position:static;order:2;width:100%;max-width:640px;align-self:center;box-sizing:border-box;padding:14px 20px;box-shadow:none;border-radius:14px 14px 0 0}
 #feed.pin{scroll-snap-type:none}
-#stat{order:3;width:100%;max-width:640px;align-self:center;box-sizing:border-box;max-height:45vh;overflow:auto;background:var(--card);border-top:1px solid var(--line);padding:6px 18px 10px}
-#stat[hidden]{display:none}
 footer{order:4}
+header{flex-wrap:wrap}header b{white-space:nowrap}
+.hb{display:flex;gap:6px;white-space:nowrap}.hb button{font-size:13px;padding:5px 9px}
+#st{order:3;flex-basis:100%;font-size:12px}#st:empty{display:none}
 #eng{background:none;border:0;padding:4px 0;color:var(--muted);font-size:13px}
 .sh{font-size:12px;color:var(--muted);margin:10px 0 3px}
 .sr{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:3px 0}
@@ -57,10 +58,9 @@ footer{order:4}
 </style>
 </head>
 <body>
-<header><b>我的英文滑讀</b><span id="st"></span><span><button id="bi">來源</button> <button id="bv">單字本</button> <button id="bs">設定</button></span></header>
+<header><b>我的英文滑讀</b><span class="hb"><button id="bt">狀態</button><button id="bi">來源</button><button id="bv">單字本</button><button id="bs">設定</button></span><span id="st"></span></header>
 <main id="feed"><section id="more"><h2>下一篇準備中</h2><p class="zh" id="mt">讀取最新資料中…</p><div class="row"><button id="gb">立即生成一篇</button></div><div id="hn" style="margin-top:18px"></div></section></main>
-<div id="stat" hidden><div id="sg"></div></div>
-<footer><button id="eng" aria-expanded="false"></button><span>上滑看下一篇，點單字看意思</span></footer>
+<footer><span id="eng"></span><span>上滑看下一篇，點單字看意思</span></footer>
 
 <div id="sheet" class="sheet" hidden><div id="sw"></div><div id="sm"></div><span id="stg" class="tag"></span> <button id="cl" style="float:right">關閉</button></div>
 
@@ -87,6 +87,12 @@ footer{order:4}
   <p id="impPrev" style="font-size:13px;color:var(--muted)"></p>
   <div class="row"><button id="impPv">預覽</button><button id="impOk" class="on">匯入</button><button id="impX">關閉</button></div>
   <div id="impList"></div>
+</div></div>
+
+<div id="pstat" class="full" hidden><div>
+  <h2>狀態</h2>
+  <div id="sg"></div>
+  <div class="row"><button id="stx" class="on">關閉</button></div>
 </div></div>
 
 <div id="pinfo" class="full" hidden><div>
@@ -136,7 +142,7 @@ const ago=t=>{const m=(Date.now()-Date.parse(t))/6e4;return m<60?Math.max(1,Math
 function eng(){
   let d=new Date();if(!D.days[fd(d)])d.setDate(d.getDate()-1);
   let n=0;while(D.days[fd(d)]){n++;d.setDate(d.getDate()-1)}
-  $("eng").textContent=(n?"連續 "+n+" 天 · ":"")+"今日 "+(D.days[fd(new Date())]||0)+" 篇 · API "+(D.calls[fd(new Date())]||0)+" 次 "+($("stat").hidden?"▴":"▾");if(!$("stat").hidden)drawStat();
+  $("eng").textContent=(n?"連續 "+n+" 天 · ":"")+"今日 "+(D.days[fd(new Date())]||0)+" 篇 · API "+(D.calls[fd(new Date())]||0)+" 次";if(!$("pstat").hidden)drawStat();
 }
 
 let WORDS=[];
@@ -196,6 +202,8 @@ function finish(a){
   if(D.hist.length>=3){const m=D.hist.reduce((x,y)=>x+y,0)/D.hist.length;if(m>8)D.off=Math.max(-1,D.off-.34);else if(m<3)D.off=Math.min(1,D.off+.34)}
   save();
 }
+const fmtWait=ms=>{const m=Math.max(1,Math.round(ms/6e4));return m>=60?Math.floor(m/60)+" 小時 "+(m%60)+" 分":m+" 分"};
+const isQuota=e=>/quota|exceeded your current/i.test((e&&e.message)||"");
 async function gem(prompt,max,temp){
   const c=D.cfg,models=[...new Set([c.model,c.model2].filter(Boolean))];
   let last=null,soon=0;
@@ -341,7 +349,7 @@ feed.addEventListener("click",e=>{const el=e.target.closest(".w");el?tap(el):hid
 feed.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("w")){e.preventDefault();tap(e.target)}});
 $("cl").onclick=hideSheet;$("gb").onclick=()=>{failed=false;gen()};
 
-function panel(id){["pset","pvoc","pinfo","pimp"].forEach(p=>$(p).hidden=p!==id);if(id==="pset")drawSet();if(id==="pvoc")drawVoc();if(id==="pinfo")drawInfo();if(id==="pimp")drawImp()}
+function panel(id){["pset","pvoc","pinfo","pimp","pstat"].forEach(p=>$(p).hidden=p!==id);if(id==="pset")drawSet();if(id==="pvoc")drawVoc();if(id==="pinfo")drawInfo();if(id==="pimp")drawImp();if(id==="pstat")drawStat()}
 function drawSet(){
   $("ck").value=D.cfg.key;$("cm").value=D.cfg.model;$("cst").value=D.cfg.strict?1:0;$("cm2").value=D.cfg.model2||"";$("climit").value=D.cfg.limit||"";$("cd").value=D.cfg.level;$("cg").value=D.cfg.len;
   const all=[...new Set([...TOPICS,...SRC.map(s=>s.topic),...D.cfg.topics])];
@@ -445,7 +453,7 @@ function drawStat(){
     ...sec("系統",[["資料更新",UPD?ago(UPD):"—"],["各主題剩餘來源",Object.entries(rem).map(([t,c])=>t+" "+c).join(" · ")||"—"],["未讀庫存",(D.articles.length-(cur<0?D.articles.length:cur+1))+" 篇"],["額度狀態",outs]])
   );
 }
-$("eng").onclick=()=>{const s=$("stat");s.hidden=!s.hidden;$("eng").setAttribute("aria-expanded",String(!s.hidden));eng();if(!s.hidden)drawStat()};
+$("bt").onclick=()=>panel("pstat");$("stx").onclick=()=>panel(null);
 
 D.articles.forEach((a,i)=>{if(i>=st0)add(a,i)});
 function restore(){
