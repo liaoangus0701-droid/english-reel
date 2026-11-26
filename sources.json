@@ -1,17 +1,6 @@
 {
- "updated": "2026-11-26T08:14:20.279Z",
+ "updated": "2026-11-26T21:29:07.866Z",
  "items": [
-  {
-   "id": "a3847e1008e8",
-   "topic": "國際",
-   "title": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nat",
-   "text": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nations final , overturning the Confederation of African Football 's decision to declare Morocco as the winner of the tournament. The 2025 Africa Cup of Nations final was a football match played on 18 January 2026 at the Prince Moulay Abdellah Stadium in Rabat, Morocco. It determined the winners of the 2025 Africa Cup of Nations (AFCON), the 35th edition of the biennial African tournament organised by the Confederation of African Football (CAF), and was contested between Senegal and hosts Morocco. The Court of Arbitration for Sport is an international body established in 1984 by the International Olympic Committee to settle disputes related to sport through arbitration. Its headquarters are in Lausanne, Switzerland, and its courts are located in New York City, Sydney, and Lausanne. Temporary courts are established in current Olympic host cities.",
-   "url": "https://en.wikipedia.org/wiki/2025_Africa_Cup_of_Nations_final",
-   "source": "Wikipedia In the news",
-   "lic": "CC BY-SA 4.0",
-   "ok": true,
-   "date": "2026-11-26T08:14:20.022Z"
-  },
   {
    "id": "908e279920ec",
    "topic": "國際",
@@ -21,29 +10,40 @@
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-26T08:14:20.022Z"
+   "date": "2026-11-26T21:29:07.521Z"
   },
   {
    "id": "9871693dffa5",
    "topic": "國際",
    "title": "Mathematician Levent Alpöge , working with the AI model Claude , announces a formal proof of the Riemann hypothesis .",
-   "text": "Mathematician Levent Alpöge , working with the AI model Claude , announces a formal proof of the Riemann hypothesis . In mathematics, the Riemann hypothesis is the theorem that the Riemann zeta function has its zeros only at the negative even integers and at complex numbers with real part. First posed in 1859 by Bernhard Riemann, pure mathematicians consider the hypothesis to be one of the most important problems in the field. It is important in number theory because it implies bounds on the distribution of prime numbers. The name is also used for some closely related analogues such as the Riemann hypothesis for curves over finite fields, which was proved by André Weil around 1940. Levent Hasan Ali Alpöge is an American and Turkish mathematician. He is known for his work using artificial intelligence to resolve major unsolved problems in mathematics. Since 2024, he has been a member of the technical staff at Anthropic, a US AI company.",
+   "text": "Mathematician Levent Alpöge , working with the AI model Claude , announces a formal proof of the Riemann hypothesis . In mathematics, the Riemann hypothesis is the theorem that the Riemann zeta function has its zeros only at the negative even integers and at complex numbers with real part. First posed in 1859 by Bernhard Riemann, pure mathematicians consider the hypothesis to be one of the most important problems in the field. It is important in number theory because it implies bounds on the distribution of prime numbers. The name is also used for some closely related analogues such as the Riemann hypothesis for curves over finite fields, which was proved by André Weil around 1940. Levent Hasan Ali Alpöge is an American and Turkish mathematician. He is known for his work using artificial intelligence to resolve major unsolved problems in mathematics. Since 2024, he has been a member of the technical staff at Anthropic, an American AI company.",
    "url": "https://en.wikipedia.org/wiki/Riemann_hypothesis",
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-26T08:14:20.022Z"
+   "date": "2026-11-26T21:29:07.521Z"
   },
   {
-   "id": "62adf33c9c4e",
+   "id": "a3847e1008e8",
    "topic": "國際",
-   "title": "Sandagiin Byambatsogt becomes acting president of Mongolia after Ukhnaagiin Khürelsükh resigns amid corruption allegatio",
-   "text": "Sandagiin Byambatsogt becomes acting president of Mongolia after Ukhnaagiin Khürelsükh resigns amid corruption allegations. Sandagiin Byambatsogt is a Mongolian politician and public administration manager who has been the Chairman of the State Great Khural since 2026. He has served as a member of the State Great Khural since 2008, having been elected five times to the parliament. A member of the Mongolian People's Party (MPP), he has also served as Chief Cabinet Secretary from 2025 to 2026, Minister of Defense from 2024 to 2025, Minister of Road and Transport from 2022 to 2024, and Minister of Justice and Home Affairs from 2016 to 2017. The president of Mongolia is the executive head of state of Mongolia and commander-in-chief of the Mongolian Armed Forces. The president also chairs the National Security Council, a consultative body to the president on the matters of national security.",
-   "url": "https://en.wikipedia.org/wiki/Sandagiin_Byambatsogt",
+   "title": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nat",
+   "text": "In association football, the Court of Arbitration for Sport restores Senegal as the winner of the 2025 Africa Cup of Nations final , overturning the Confederation of African Football 's decision to declare Morocco as the winner of the tournament. The 2025 Africa Cup of Nations final was a football match played on 18 January 2026 at the Prince Moulay Abdellah Stadium in Rabat, Morocco. It determined the winners of the 2025 Africa Cup of Nations (AFCON), the 35th edition of the biennial African tournament organised by the Confederation of African Football (CAF), and was contested between Senegal and hosts Morocco. The Court of Arbitration for Sport is an international body established in 1984 by the International Olympic Committee to settle disputes related to sport through arbitration. Its headquarters are in Lausanne, Switzerland, and its courts are located in New York City, Sydney, and Lausanne. Temporary courts are established in current Olympic host cities.",
+   "url": "https://en.wikipedia.org/wiki/2025_Africa_Cup_of_Nations_final",
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-26T08:14:20.022Z"
+   "date": "2026-11-26T21:29:07.520Z"
+  },
+  {
+   "id": "da0a3f9a9dd6",
+   "topic": "國際",
+   "title": "Support Global Voices&#8217; January Spotlight: Independent journalism",
+   "text": "In our January spotlight, Global Voices is celebrating the independent journalism that keeps governments and institutions accountable.",
+   "url": "https://globalvoices.org/2026/11/26/support-global-voices-january-spotlight-independent-journalism/",
+   "source": "Global Voices",
+   "lic": "CC BY",
+   "ok": true,
+   "date": "2026-11-26T08:16:21.000Z"
   },
   {
    "id": "1ebb5952d094",
@@ -233,17 +233,6 @@
    "date": "2026-11-20T05:01:00.000Z"
   },
   {
-   "id": "f8bf266042a6",
-   "topic": "國際",
-   "title": "Why Japan’s anti-hate measures fall short",
-   "text": "The prevalence of online hate speech is to a large extent related to a lack of effective domestic legislation and human rights education.",
-   "url": "https://globalvoices.org/2026/11/20/why-japans-anti-hate-measures-fall-short/",
-   "source": "Global Voices",
-   "lic": "CC BY",
-   "ok": true,
-   "date": "2026-11-20T00:00:00.000Z"
-  },
-  {
    "id": "bb697c970496",
    "topic": "科技",
    "title": "Sierra Snow Season Spins Up",
@@ -324,7 +313,7 @@
    "id": "f5b3ff01ae76",
    "topic": "科技人物",
    "title": "Jensen Huang - profile",
-   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in 2025. He briefly resigned from his positions at Nvidia but was later reinstated in 2026 after reports of multiple extramarital affairs, including one with a woman initially suspected of Chinese espionage. In 2021 and 2024, Time magazine included Huang in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for hi",
+   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in 2025. He briefly resigned from his positions at Nvidia in 2026 after reports of multiple extramarital affairs, including one with a woman suspected of Chinese espionage, but was reinstated soon after. U.S. intelligence officials later said that there was no evidence that the affair was directed by the Chinese government. In 2021 and 2024, Time magazine included Huang in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its",
    "url": "https://en.wikipedia.org/wiki/Jensen_Huang",
    "source": "Wikipedia",
    "lic": "CC BY-SA 4.0",
@@ -378,74 +367,74 @@
  ],
  "links": [
   {
-   "title": "Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening",
-   "url": "https://scottaaronson.blog/?p=10379",
-   "hn": "https://news.ycombinator.com/item?id=50646108",
-   "score": 1404,
-   "comments": 1233
+   "title": "AMD Specific Patches for Llama.cpp",
+   "url": "https://devnull.land/amd-specific-llama-cpp",
+   "hn": "https://news.ycombinator.com/item?id=50657265",
+   "score": 200,
+   "comments": 52
   },
   {
-   "title": "1Password Security Incident",
-   "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
-   "hn": "https://news.ycombinator.com/item?id=50644817",
-   "score": 1379,
-   "comments": 579
-  },
-  {
-   "title": "Lions' Commentary on Unix: Why It Was Secretly Copied for 20 Years",
-   "url": "https://fosscomics.com/posts/17.%20Lions%27%20Commentary%20on%20Unix/",
-   "hn": "https://news.ycombinator.com/item?id=50651719",
-   "score": 60,
-   "comments": 9
-  },
-  {
-   "title": "Much shorter version of GRH Lean verification from Anthropic",
-   "url": "https://github.com/lsernau/grh-lean",
-   "hn": "https://news.ycombinator.com/item?id=50648050",
-   "score": 429,
-   "comments": 220
-  },
-  {
-   "title": "Minipg: PostgreSQL as a Single Executable",
-   "url": "https://progrium.github.io/minipg/",
-   "hn": "https://news.ycombinator.com/item?id=50650892",
-   "score": 97,
-   "comments": 14
-  },
-  {
-   "title": "The New York Times warns photographers not to update Photoshop over AI features",
-   "url": "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features",
-   "hn": "https://news.ycombinator.com/item?id=50647673",
-   "score": 341,
-   "comments": 291
-  },
-  {
-   "title": "Collection of preserved UI style guides",
-   "url": "https://aresluna.org/ui-style-guides/",
-   "hn": "https://news.ycombinator.com/item?id=50649834",
+   "title": "CTO of 'RansomwareHelp' Indicted for Wire Fraud",
+   "url": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+   "hn": "https://news.ycombinator.com/item?id=50657645",
    "score": 143,
-   "comments": 16
+   "comments": 59
   },
   {
-   "title": "Tell HN: Lots of Ask HNs again",
-   "url": "https://news.ycombinator.com/item?id=50649864",
-   "hn": "https://news.ycombinator.com/item?id=50649864",
-   "score": 245,
-   "comments": 90
+   "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+   "url": "https://github.com/antonpictures/youtube-punisher",
+   "hn": "https://news.ycombinator.com/item?id=50657530",
+   "score": 137,
+   "comments": 197
   },
   {
-   "title": "Moat: Your OpenRouter Replacement",
-   "url": "https://commandcode.ai/moat",
-   "hn": "https://news.ycombinator.com/item?id=50652184",
-   "score": 14,
-   "comments": 11
+   "title": "Show HN: Fuck_data_brokers.py",
+   "url": "https://github.com/gary23w/f-ck_data_brokers",
+   "hn": "https://news.ycombinator.com/item?id=50658191",
+   "score": 124,
+   "comments": 17
   },
   {
-   "title": "Show HN: Synth Patch Hero",
-   "url": "https://swarkentin.github.io/synth-patch-hero/",
-   "hn": "https://news.ycombinator.com/item?id=50623232",
+   "title": "The greatest architect you've never heard of is in Pakistan",
+   "url": "https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan/",
+   "hn": "https://news.ycombinator.com/item?id=50659841",
+   "score": 4,
+   "comments": 0
+  },
+  {
+   "title": "Rvoip 0.5 the complete VoIP stack in Rust",
+   "url": "https://github.com/eisenzopf/rvoip",
+   "hn": "https://news.ycombinator.com/item?id=50658632",
    "score": 21,
-   "comments": 6
+   "comments": 5
+  },
+  {
+   "title": "Intel One Mono font (2023)",
+   "url": "https://github.com/intel/intel-one-mono",
+   "hn": "https://news.ycombinator.com/item?id=50653667",
+   "score": 415,
+   "comments": 229
+  },
+  {
+   "title": "Show HN: Three Linux VMs in a browser tab, each running a different browser",
+   "url": "https://michidk.github.io/sidebyside/",
+   "hn": "https://news.ycombinator.com/item?id=50656036",
+   "score": 90,
+   "comments": 23
+  },
+  {
+   "title": "Show HN: Olumino, a Markdown notes and spaced repetition app",
+   "url": "https://olumino.app",
+   "hn": "https://news.ycombinator.com/item?id=50651099",
+   "score": 24,
+   "comments": 15
+  },
+  {
+   "title": "George Whitesides, 1939-2026",
+   "url": "https://www.science.org/content/blog-post/george-whitesides-1939-2026",
+   "hn": "https://news.ycombinator.com/item?id=50657936",
+   "score": 24,
+   "comments": 4
   }
  ]
 }
