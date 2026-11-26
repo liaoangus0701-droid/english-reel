@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T21:39:45.117Z",
+ "updated": "2026-11-26T08:14:20.279Z",
  "items": [
   {
    "id": "a3847e1008e8",
@@ -10,7 +10,7 @@
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T21:39:44.748Z"
+   "date": "2026-11-26T08:14:20.022Z"
   },
   {
    "id": "908e279920ec",
@@ -21,29 +21,51 @@
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T21:39:44.748Z"
+   "date": "2026-11-26T08:14:20.022Z"
   },
   {
-   "id": "859a0f8c0e32",
+   "id": "9871693dffa5",
    "topic": "國際",
-   "title": "Mongolian president Ukhnaagiin Khürelsükh announces his resignation in response to corruption allegations.",
-   "text": "Mongolian president Ukhnaagiin Khürelsükh announces his resignation in response to corruption allegations. Ukhnaagiin Khürelsükh is a Mongolian politician who served as President of Mongolia from 2021 to 2026. He previously served as Prime Minister of Mongolia from 2017 to 2021 and was elected to the Parliament of Mongolia four times – in 2000, 2004, 2012, and 2020.",
-   "url": "https://en.wikipedia.org/wiki/Ukhnaagiin_Kh%C3%BCrels%C3%BCkh",
+   "title": "Mathematician Levent Alpöge , working with the AI model Claude , announces a formal proof of the Riemann hypothesis .",
+   "text": "Mathematician Levent Alpöge , working with the AI model Claude , announces a formal proof of the Riemann hypothesis . In mathematics, the Riemann hypothesis is the theorem that the Riemann zeta function has its zeros only at the negative even integers and at complex numbers with real part. First posed in 1859 by Bernhard Riemann, pure mathematicians consider the hypothesis to be one of the most important problems in the field. It is important in number theory because it implies bounds on the distribution of prime numbers. The name is also used for some closely related analogues such as the Riemann hypothesis for curves over finite fields, which was proved by André Weil around 1940. Levent Hasan Ali Alpöge is an American and Turkish mathematician. He is known for his work using artificial intelligence to resolve major unsolved problems in mathematics. Since 2024, he has been a member of the technical staff at Anthropic, a US AI company.",
+   "url": "https://en.wikipedia.org/wiki/Riemann_hypothesis",
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T21:39:44.748Z"
+   "date": "2026-11-26T08:14:20.022Z"
   },
   {
-   "id": "f8f8ae79c6b4",
+   "id": "62adf33c9c4e",
    "topic": "國際",
-   "title": "The International Court of Justice rules that Myanmar has committed genocide against the Rohingya people .",
-   "text": "The International Court of Justice rules that Myanmar has committed genocide against the Rohingya people . The Application of the Convention on the Prevention and Punishment of the Crime of Genocide , commonly referred to as the Rohingya genocide case, was a case heard by the International Court of Justice (ICJ). The case was brought by the Republic of The Gambia, on behalf of 57 members of the Organisation of Islamic Cooperation in 2019. On 19 November 2026, the ICJ found \"that Myanmar committed acts falling under … the genocide convention with an intent to destroy a substantial part of the Rohingya population in Myanmar\". The International Court of Justice, or colloquially the World Court, is the principal judicial organ of the United Nations (UN). It settles legal disputes submitted to it by states and provides advisory opinions on legal questions referred to it by other UN organs and specialized agencies. The ICJ is the only international court that adjudicates general disputes between countries, with its rulings and opinions serving as primary sources of international law. It is one of the six principal organs of the United Nations.",
-   "url": "https://en.wikipedia.org/wiki/Rohingya_genocide_case",
+   "title": "Sandagiin Byambatsogt becomes acting president of Mongolia after Ukhnaagiin Khürelsükh resigns amid corruption allegatio",
+   "text": "Sandagiin Byambatsogt becomes acting president of Mongolia after Ukhnaagiin Khürelsükh resigns amid corruption allegations. Sandagiin Byambatsogt is a Mongolian politician and public administration manager who has been the Chairman of the State Great Khural since 2026. He has served as a member of the State Great Khural since 2008, having been elected five times to the parliament. A member of the Mongolian People's Party (MPP), he has also served as Chief Cabinet Secretary from 2025 to 2026, Minister of Defense from 2024 to 2025, Minister of Road and Transport from 2022 to 2024, and Minister of Justice and Home Affairs from 2016 to 2017. The president of Mongolia is the executive head of state of Mongolia and commander-in-chief of the Mongolian Armed Forces. The president also chairs the National Security Council, a consultative body to the president on the matters of national security.",
+   "url": "https://en.wikipedia.org/wiki/Sandagiin_Byambatsogt",
    "source": "Wikipedia In the news",
    "lic": "CC BY-SA 4.0",
    "ok": true,
-   "date": "2026-11-25T21:39:44.748Z"
+   "date": "2026-11-26T08:14:20.022Z"
+  },
+  {
+   "id": "1ebb5952d094",
+   "topic": "科技",
+   "title": "APOD: 2026 November 26 – Eye in the Sky: The Milky Way over Lençóis",
+   "text": "APOD Science APOD APOD: 2026 November 26 – Eye… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. Eye in",
+   "url": "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-26T05:05:00.000Z"
+  },
+  {
+   "id": "cfea6ef40c3a",
+   "topic": "科技",
+   "title": "Seeking Refuge on Resolution Island",
+   "text": "New Zealanders have long envisioned the island as a predator-free zone for native birds, but swimming stoats have shown a resolve of their own.",
+   "url": "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island/",
+   "source": "NASA News Releases",
+   "lic": "NASA（多數內容無版權）",
+   "ok": true,
+   "date": "2026-11-26T05:01:00.000Z"
   },
   {
    "id": "ecb5d293ef4c",
@@ -121,28 +143,6 @@
    "lic": "NASA（多數內容無版權）",
    "ok": true,
    "date": "2026-11-25T05:05:00.000Z"
-  },
-  {
-   "id": "cecb33e1b7ed",
-   "topic": "科技",
-   "title": "Georgia’s Pecan Belt",
-   "text": "Since an early-1900s planting boom, orchards along the Flint River in southwest Georgia have become a center of U.S. pecan production.",
-   "url": "https://science.nasa.gov/earth/earth-observatory/georgias-pecan-belt/",
-   "source": "NASA News Releases",
-   "lic": "NASA（多數內容無版權）",
-   "ok": true,
-   "date": "2026-11-25T05:00:00.000Z"
-  },
-  {
-   "id": "f78eeb5c4dbc",
-   "topic": "科技",
-   "title": "NASA+ Content Coming to Big Screen at Greenbelt, Maryland Cinema",
-   "text": "NASA announced Monday that NASA+ content has found its first theatrical home at The Greenbelt Cinema in Greenbelt, Maryland, expanding the agency’s reach across major viewing platforms and bringing space even closer to home. “The National Aeronautics and Space Act of 1958 calls us to share our story of space exploration with the broadest possible",
-   "url": "https://www.nasa.gov/nasa/nasa-content-coming-to-big-screen-at-greenbelt-maryland-cinema/",
-   "source": "NASA News Releases",
-   "lic": "NASA（多數內容無版權）",
-   "ok": true,
-   "date": "2026-11-24T21:14:36.000Z"
   },
   {
    "id": "5f09178094f8",
@@ -324,7 +324,7 @@
    "id": "f5b3ff01ae76",
    "topic": "科技人物",
    "title": "Jensen Huang - profile",
-   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in October 2025. In 2021 and 2024, Time magazine included him in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for his contributions to machine learning and computational science. In November 2026, it was reported that Huang had multiple extramarital affairs, including one with Chinese business executive Alic",
+   "text": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world. Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI). Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in 2025. He briefly resigned from his positions at Nvidia but was later reinstated in 2026 after reports of multiple extramarital affairs, including one with a woman initially suspected of Chinese espionage. In 2021 and 2024, Time magazine included Huang in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for hi",
    "url": "https://en.wikipedia.org/wiki/Jensen_Huang",
    "source": "Wikipedia",
    "lic": "CC BY-SA 4.0",
@@ -346,7 +346,7 @@
    "id": "14b025acf5d7",
    "topic": "科技人物",
    "title": "Elon Musk - profile",
-   "text": "Elon Reeve Musk ( ; born June 28, 1971) is an industrialist. He is the chief executive officer and largest shareholder of Tesla and SpaceX and has been the wealthiest person in the world since 2025, becoming the only trillionaire in history (in terms of US dollars) in 2026; as of November 2026, Forbes estimates his net worth to be $849.7 billion. Born into the wealthy Musk family in Pretoria, South Africa, Musk emigrated to Canada in 1989; he has Canadian citizenship as his mother was born there. He received bachelor's degrees in 1997 from the University of Pennsylvania before moving to California, United States, to pursue business ventures. In 1995, he co-founded Zip2, a web software company. Following its sale in 1999, he co-founded X.com, an e-commerce payment system that merged with Confinity in March 2000 to form PayPal. Musk also became an American citizen in 2002. In 2002, Musk founded and became CEO and chief engineer of SpaceX, a space technology company. Musk joined Tesla as an angel investor in 2004 and became its CEO and product architect in 2008. In 2015, Musk co-founded OpenAI to advance artificial intelligence (AI) research, but later left; his growing discontent with the organization's direction and leadership in the AI boom in the 2020s led him to establish xAI, which became a subsidiary of SpaceX in 2026. In 2022, he acquired Twitter, a social networking service, and made significant changes, including rebranding it as X in 2023. His other businesses include",
+   "text": "Elon Reeve Musk ( ; born June 28, 1971) is an industrialist who is the chief executive officer (CEO) and largest shareholder of Tesla and SpaceX. He has been the wealthiest person in the world since 2025, becoming the only trillionaire in history (in terms of US dollars) in 2026; as of November 2026, Forbes estimates his net worth to be $849.7 billion. Born into the wealthy Musk family in Pretoria, South Africa, Musk emigrated to Canada in 1989; he has Canadian citizenship as his mother was born there. He received bachelor's degrees in 1997 from the University of Pennsylvania before moving to California, United States, to pursue business ventures. In 1995, he co-founded Zip2, a web software company. Following its sale in 1999, he co-founded X.com, an e-commerce payment system that merged with Confinity in March 2000 to form PayPal. Musk also became an American citizen in 2002. In 2002, Musk founded and became CEO and chief engineer of SpaceX, a space technology company. Musk joined Tesla as an angel investor in 2004 and became its CEO and product architect in 2008. In 2015, Musk co-founded OpenAI to advance artificial intelligence (AI) research, but later left; his growing discontent with the organization's direction and leadership in the 2020s AI boom led him to establish xAI, which became a subsidiary of SpaceX in 2026. In 2022, he acquired Twitter, a social networking service, and made significant changes, including rebranding it as X in 2023. His other businesses include ",
    "url": "https://en.wikipedia.org/wiki/Elon_Musk",
    "source": "Wikipedia",
    "lic": "CC BY-SA 4.0",
@@ -378,74 +378,74 @@
  ],
  "links": [
   {
-   "title": "1Password Security Incident",
-   "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
-   "hn": "https://news.ycombinator.com/item?id=50644817",
-   "score": 808,
-   "comments": 333
-  },
-  {
    "title": "Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening",
    "url": "https://scottaaronson.blog/?p=10379",
    "hn": "https://news.ycombinator.com/item?id=50646108",
-   "score": 519,
-   "comments": 373
+   "score": 1404,
+   "comments": 1233
   },
   {
-   "title": "A few questions for the guy who went snorkeling in a Home Depot retention pond",
-   "url": "https://www.vox.com/down-to-earth/511999/home-depot-retention-pond-snorkel-joseph-ricketts",
-   "hn": "https://news.ycombinator.com/item?id=50643129",
-   "score": 385,
-   "comments": 93
+   "title": "1Password Security Incident",
+   "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
+   "hn": "https://news.ycombinator.com/item?id=50644817",
+   "score": 1379,
+   "comments": 579
   },
   {
-   "title": "GPT-6.2 Astra is the first model to beat Googlers' code golf records",
-   "url": "https://bjin.github.io/go-codegolf-benchmark/#leaderboard",
-   "hn": "https://news.ycombinator.com/item?id=50601280",
-   "score": 56,
+   "title": "Lions' Commentary on Unix: Why It Was Secretly Copied for 20 Years",
+   "url": "https://fosscomics.com/posts/17.%20Lions%27%20Commentary%20on%20Unix/",
+   "hn": "https://news.ycombinator.com/item?id=50651719",
+   "score": 60,
    "comments": 9
   },
   {
-   "title": "SSH is a GUI framework",
-   "url": "https://zydra.sh/articles/ssh-is-a-gui-framework/",
-   "hn": "https://news.ycombinator.com/item?id=50589784",
-   "score": 71,
-   "comments": 36
+   "title": "Much shorter version of GRH Lean verification from Anthropic",
+   "url": "https://github.com/lsernau/grh-lean",
+   "hn": "https://news.ycombinator.com/item?id=50648050",
+   "score": 429,
+   "comments": 220
   },
   {
-   "title": "The polynomial Hirsch conjecture is false [pdf]",
-   "url": "https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf",
-   "hn": "https://news.ycombinator.com/item?id=50644980",
-   "score": 76,
-   "comments": 13
+   "title": "Minipg: PostgreSQL as a Single Executable",
+   "url": "https://progrium.github.io/minipg/",
+   "hn": "https://news.ycombinator.com/item?id=50650892",
+   "score": 97,
+   "comments": 14
   },
   {
-   "title": "Britain's ghost stations",
-   "url": "https://spectator.com/article/britains-ghost-stations-are-fascinating/",
-   "hn": "https://news.ycombinator.com/item?id=50645074",
-   "score": 58,
-   "comments": 12
+   "title": "The New York Times warns photographers not to update Photoshop over AI features",
+   "url": "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features",
+   "hn": "https://news.ycombinator.com/item?id=50647673",
+   "score": 341,
+   "comments": 291
   },
   {
-   "title": "I checked Clojure's core with Lean and found unreported bugs",
-   "url": "https://s.conao3.com/blog/2026/e4f733",
-   "hn": "https://news.ycombinator.com/item?id=50642939",
-   "score": 144,
-   "comments": 52
+   "title": "Collection of preserved UI style guides",
+   "url": "https://aresluna.org/ui-style-guides/",
+   "hn": "https://news.ycombinator.com/item?id=50649834",
+   "score": 143,
+   "comments": 16
   },
   {
-   "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
-   "url": "https://github.com/xoxorwr/pw-loudness-eq",
-   "hn": "https://news.ycombinator.com/item?id=50641171",
-   "score": 294,
-   "comments": 165
+   "title": "Tell HN: Lots of Ask HNs again",
+   "url": "https://news.ycombinator.com/item?id=50649864",
+   "hn": "https://news.ycombinator.com/item?id=50649864",
+   "score": 245,
+   "comments": 90
   },
   {
-   "title": "Google releases Cogentic papers on integer factorization, discrete logs and more",
-   "url": "https://github.com/google-research/google-research/tree/master/cogentic_research_papers",
-   "hn": "https://news.ycombinator.com/item?id=50642086",
-   "score": 396,
-   "comments": 310
+   "title": "Moat: Your OpenRouter Replacement",
+   "url": "https://commandcode.ai/moat",
+   "hn": "https://news.ycombinator.com/item?id=50652184",
+   "score": 14,
+   "comments": 11
+  },
+  {
+   "title": "Show HN: Synth Patch Hero",
+   "url": "https://swarkentin.github.io/synth-patch-hero/",
+   "hn": "https://news.ycombinator.com/item?id=50623232",
+   "score": 21,
+   "comments": 6
   }
  ]
 }
